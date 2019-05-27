@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            border: 1px solid #000;
+        }
+        .box .child-box{
+            width: 200px;
+            background-color: aqua;
+            margin: 100px auto;
+            height: 200px;
+            max-height: 0px;
+            transition: max-height 2s;
+            -webkit-transition: max-height 2s;
+        }
+        .box:hover .child-box{
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 整体 -->
+    <div class="box">
+        <div class="child-box"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //    new 关键字是用来继承的. 面向对象的基础
+    function Person (name, age) {
+        this.name = name
+        this.age = age
+    }
+    Person.prototype = {
+        ablility: 1000,
+        sayName: function () {
+            alert(this.name)
+        }
+    }
+    let person1 = new Person('liwenwen', 25)
+    person1.sayName()
+    
+    // 使用new关键字生成的类具有两个特点1：访问到构造函数中的属性2：访问到构造函数的prototype对象中的对象
+    // 如何实现的？
+    // 解决1：经典继承（借用构造函数的方式）
+    function Parent () {
+        this.name = ['derry', 'qiqi']
+    }
+    function Child () {
+        Parent.call(this)
+    }
+    var child1 = new Child()
+    child1.name.push('djajgfd')
+    var child2 = new Child()
+    // 通过Parent.call 或则 apply 这样的方式让child具有parent的属性
+    // 2.怎么获取原型链上的属性呢？ __proto__
+    function Dnew () {
+        var obj = {} // 创建空对象
+        Constructor = [].shift.call(arguments) // shift 取出arguments中的第一个参数。也就是我们传入的构造函数
+        obj.__proto__ = Constructor.prototype // 将obj的原型链指向构造函数。 这样obj就可以访问到构造函数原型链上的属性了
+        Constructor.apply(obj, arguments) // 使用apply/call 改变构造函数 this的指向 指向到新建的对象， 这样obj可以访问到构造函数的属性
+        return obj // 返回对象
+    }
+    // shift 始终删除数组的第一个元素， 返回被删除的元素
+    // 学到 44分钟了
+    
+   </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- 购物节流 -->
+    <div class="box" style="width: 100px; height: 100px; color: #000">0</div>
+    <button class="btn">+</button>
+    <script>
+        var oDiv = document.getElementsByClassName('box')[0]
+        var oBtn = document.getElementsByClassName('btn')[0]
+        function show (e) {
+            console.log(this, e)
+            oDiv.innerText = parseInt(oDiv.innerText) + 1
+        }
+        function throttle (handler, wait) {
+            var lastTime = 0
+            return function (e) {
+                var nowTime = new Date().getTime()
+                if (nowTime - lastTime > wait) {
+                    handler.apply(this, arguments)
+                    lastTime = nowTime
+                }
+            }
+        }
+        oBtn.onclick = throttle(show, 1000)
+    </script>
+    <!-- 防抖和节流 -->
+    <script>
+        function fac (n) {
+            console.log('fac--->' + n)
+            if (n === 0 || n === 1) {
+                return 1
+            } else {
+                return n * fac(n-1)
+            }
+        }
+        function a (fn) {
+            var cache = {}
+            return function () {
+                var key = arguments.length + Array.prototype.join.call(arguments)
+                // 这里可以的作用只是为了有一个唯一的标识
+                if (cache[key]) {
+                    return cache[key]
+                } else {
+                    cache[key] = fn.apply(this, arguments)
+                    return cache[key]
+                }
+            }
+        }
+        var c = a(fac)
+        // 纯函数  不依赖外界  也  不影响外界   预防bug的利器   单元测试  
+        // 管理状态  可预测性 
+        var arr = [
+            {name: 'li'},
+            {name: 'zhang'},
+            {name: 'zhao'}
+        ]
+        function clone (arr) {
+            var _arr = []
+            for (var i = 0; i < arr.length; i++) {
+                _arr.push(Object.assign({}, arr[i]))
+            }
+            return _arr
+        }
+        var newArr = clone(arr)
+    </script>
+    <script src=""></script>
+</body>
+</html>

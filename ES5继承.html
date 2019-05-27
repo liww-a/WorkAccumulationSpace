@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        // 对象的方法
+        // Object.keys(targetObj)
+        // 获取targetObj 的所有key
+
+        // Object.values(targetObj)
+        // 获取targetObj 的所有value
+
+    // constructor 对象的属性 返回targetObj 对象的构造方法
+    // targetObj.constructor
+    // delete 删除指定对象的实例属性
+    // hasOwnProperty() 判断实例是否包含 该实例属性
+    // 实例属性  in  实例 判断该实例属性是否存在于（实例或原型中）
+
+    // Object.getPrototypeOf 获取实例对象的原型
+    
+    // 工厂模式/
+    // 无法分辨当前实例的原型
+    // 没有使用new关键字创建实例
+    function CreatObject (name, age) {
+        var obj = new Object()
+        obj.name = name
+        obj.age = age
+        obj.sayName = function () {
+            return this.name
+        }
+        return obj
+    }
+    
+    let obj1 = CreatObject('zhangsan', 12)
+    let obj2 = CreatObject('lisi', 13)
+    let obj3 = CreatObject('wangwu', 14)
+
+    // 构造函数
+    // 构造函数浪费了大量的存储空间，
+
+    function Person (name, age) {
+        this.name = name
+        this.age = age
+        this.sayName = function () {
+            return this.name
+        }
+    }
+    let xiaoMing = new Person('xiaoming', 23)
+    let xiaoHua = new Person('xiaohua', 19)
+    xiaoMing.sayName = function () {
+        return `name:${this.name}`
+    }
+
+    // 原型
+    // 不能传参
+    function Ball () {
+        // 
+    }
+    Ball.prototype.name = 'zhaoliu'
+    Ball.prototype.age = 12
+    Ball.prototype.sayName = function () {
+        return this.name
+    }
+
+
+
+    // 混合模式
+    function Fruit (name, price) {
+        this.name = name
+        this.price = price
+    }
+    Fruit.prototype = {
+        showName: function () {
+            return this.name
+        },
+        showPrice: function () {
+            console.log(this.price)
+        }
+    }
+    let apple = new Fruit('apple', 4)
+    let appleName = apple.showName()
+
+
+
+//  封装
+    function Box (width, height) {
+        var boxWidth = width
+        var boxHeight = height
+        function toPadding () {
+            return '将盒子装满'
+        }
+        this.externalInterface = function () {
+            //可以使用上面定义的函数 和变量
+        }
+        this.getWidth = function () {
+            return boxWidth
+        }
+        this.setWidth = function (width) {
+            boxWidth = width
+        }
+    }
+    let box1 = new Box(100, 200)
+
+    // 原型模式的执行流程
+    // 先查找构造函数中的属性和方法，如果有立刻返回，
+    // 如果没有则去原型对象中查找， 有就返回
+
+
+    // 继承
+    function Parent (name, age) {
+        this.name = name
+        this.age = age
+    }
+    Parent.prototype = {
+        sayName: function () {
+            return this.name
+        },
+        sayAge: function () {
+            return this.age
+        }
+    }
+
+
+    // function Child () {
+
+    // }
+
+    // 子类  继承  父类
+    // 原型继承 只是使用了父类原型对象的引用 
+    // Child.prototype = Parent.prototype 
+    // Child.prototype.sing = function () {
+    //     return 'huichangge'
+    // }
+    // 原型链继承
+    for (let key in Parent.prototype) {
+        Child.prototype[key] = Parent.prototype[key]
+    }
+    // Child.prototype.sing = function () {
+    //     return '我会唱歌'
+    // }
+    
+    function Child (name, age) {
+        Parent.call(this, name, age)
+    }
+
+    
+    
+    function Animal () {
+        if (arguments.length === 2 && Object.prototype.toString.call(arguments[1]) === '[object Array]') {
+            this = arguments[0]
+            this.name = arguments[1][0]
+            this.sex = arguments[1][1]
+            this.age = arguments[1][2]
+        }
+    }
+    let obj = {}
+    Animal(obj, ['xiaohua', 'man', 12, '178cm', 'beijing'])
+
+    </script>
+</body>
+</html>

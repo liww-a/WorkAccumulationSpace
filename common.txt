@@ -1,0 +1,57 @@
+1.两种盒模型的区别  IE盒模型的content部分包含了border和padding
+  标准盒模型： margin  border  padding   content 
+2.position 的 absolute  和 fixed 的共同点 和  不同点 
+  共同点:  1) 改变行内元素的呈现方式， display被置为block
+          2)  让元素脱离普通流, 不占据空间
+          3)  默认会覆盖非定位元素上
+  不同点： absolute 的根元素可以设置， fixed的根元素不可设置
+
+
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+# 102.54.94.97 rhino.acme.com # source server
+# 38.25.63.10 x.acme.com # x client host
+
+# localhost name resolution is handled within DNS itself.
+# 127.0.0.1 localhost
+# ::1 localhost
+#47.95.68.239 bjpark.glodon.com
+
+127.0.0.1 bjpark-dev
+127.0.0.1 bjhccd-dev
+127.0.0.1 ceair-dev
+#10.1.83.98 bjhccd-dev
+#10.1.83.98 bjpark-dev
+10.1.83.98 park-dev
+
+#企业云平台
+
+10.0.197.96 bim5d-platform.glodon.com
+192.168.144.147 xmgl.glodon.com
+127.0.0.1 test.glodon.com
+
+#用户中心测试地址:
+
+10.129.8.36  account.glodon.com
+
+#广联云地址：
+10.5.3.49  api.glodon.com
+10.5.3.52  sy.glodon.com 
+10.5.3.56  yun.glodon.com 
+10.5.3.56  xz.glodon.com
+10.5.3.66  owa.glodon.com
+10.5.3.56  express.glodon.com
+

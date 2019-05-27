@@ -1,0 +1,54 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "records": [
+            {
+                "sysCreateTime": 1556507089000,
+                "sysModifiedTime": 1556507136000,
+                "sysRevision": "1556507135749",
+                "sysCreatorId": "6468762357166207744",
+                "sysModifierId": "6468762357166207744",
+                "action": null,
+                "orgId": "240779720239616",
+                "orgFullId": "240779720239616",
+                "id": "1122698218589741057",
+                "professionalSubcontractGroupId": "1122384987748847617",
+                "code": "040010010",
+                "name": "A",
+                "unit": "m2",
+                "context": null,
+                "isInvalid": 1,
+                "remark": "",
+                "orderNo": 10,
+                "isDelete": 0,
+                "levelCode": "2"
+            },
+            {
+                "sysCreateTime": 1556507169000,
+                "sysModifiedTime": 1556507169000,
+                "sysRevision": "1556507168640",
+                "sysCreatorId": "6468762357166207744",
+                "sysModifierId": "6468762357166207744",
+                "action": null,
+                "orgId": "240779720239616",
+                "orgFullId": "240779720239616",
+                "id": "1122698553869819905",
+                "professionalSubcontractGroupId": "1122384987748847617",
+                "code": "040010013",
+                "name": "AA",
+                "unit": "",
+                "context": null,
+                "isInvalid": 0,
+                "remark": "",
+                "orderNo": 11,
+                "isDelete": 0,
+                "levelCode": "2"
+            }
+        ],
+        "totalCount": 2,
+        "totalPage": 1,
+        "currentPage": 1,
+        "pageSize": 50
+    }
+}

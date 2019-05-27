@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>火焰监控</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery.min.js"></script>
+    <style>
+        table tr:nth-child(2n) {
+            background-color: aquamarine;
+        }
+        
+        .flex-container {
+            display: flex;
+            display: -webkit-flex;
+            display: -moz-flex;
+            flex-direction: row;
+            -ms-flex-direction: row;
+            -webkit-flex-direction: row;
+            /* flex-direction: column;
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column; */
+            /* justify-content: center;
+      -ms-justify-content: center;
+      -webkit-justify-content: center; */
+            /* align-items: center;
+      -ms-align-items: center;
+      -webkit-align-items: center; */
+            /* align-items: baseline;
+      -ms-align-items: baseline;
+      -webkit-align-items: baseline; */
+            /* align-items: stretch;
+      -ms-align-items: stretch;
+      -webkit-align-items: stretch; */
+            /* align-items: flex-start;
+      -ms-align-items: flex-start;
+      -webkit-align-items: flex-start; */
+            /* flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap; */
+            /* align-content: center;
+      -webkit-align-content: center;
+      -ms-align-content: center; */
+            width: 400px;
+            height: 250px;
+            background-color: lightgrey;
+        }
+        /*====================================================*/
+        
+        .flex-item {
+            background-color: cornflowerblue;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            /* margin-right: auto; */
+        }
+        
+        .first {
+            order: -1;
+            -webkit-order: -1;
+            /* margin: 0 auto; */
+            /* margin: auto; */
+        }
+        
+        .second {
+            order: -2;
+            -webkit-order: -2;
+        }
+        
+        .box {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #666;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./one.js"></script>
+    <div class="flex-container">
+        <div class="flex-item first">flex item 1</div>
+        <div class="flex-item second">flex item 2</div>
+        <div class="flex-item third">flex item 3</div>
+    </div>
+    <div class="box">
+        可是对方立刻就说来看看了解 对方卡时间冻结饭卡剩江东父老 是的罚款鲁淑姣地方数据库的 房间里看电视来看数据库的方式 上课了的房间里开始的 撒旦法 是看得见发牢骚 圣诞节福利卡世纪东方 老师讲的路口附近的时刻 来看是打飞机了坚实的 圣诞节快疯了离开时的 上来看当减肥了 来看收到了开发 了深刻的弗兰克 会计师的积分离开 可是对方立刻就说来看看了解 对方卡时间冻结饭卡剩江东父老 是的罚款鲁淑姣地方数据库的 房间里看电视来看数据库的方式 上课了的房间里开始的 撒旦法 是看得见发牢骚 圣诞节福利卡世纪东方
+        老师讲的路口附近的时刻 来看是打飞机了坚实的 圣诞节快疯了离开时的 上来看当减肥了 来看收到了开发 了深刻的弗兰克 会计师的积分离开
+    </div>
+
+    <script>
+        var oBox = document.getElementsByClassName('box')[0]
+        oBox.className = 'box alice'
+        console.log(oBox)
+        oBox.scrollTop = (oBox.scrollHeight - 300)
+            // oBox.addEventListener('scroll', function () {
+            //   console.log('object')
+            // }, false)
+        oBox.onscroll = function(e) {
+            var event = e || window.event
+            var target = event.target
+            console.log(target.scrollTop, '======', target.scrollHeight, '-----', target.scrollLeft, '----', target.scrollWidth)
+        }
+    </script>
+    <form action="/update" method="post">
+        <fieldset>
+            <legend>个人信息</legend>
+            <p>
+                name: <input type="text" id="_name" value="enter you name">
+            </p>
+            <p>
+                age: <input type="text" value="enter you age">
+            </p>
+        </fieldset>
+        <input type="submit" value="提交">
+    </form>
+
+    <label for="_textarea">这是一个文本域</label>
+    <!-- <textarea name="测试文本域" id="_textarea" cols="50" rows="10" style="resize: none;"></textarea> -->
+    <label for="_button">这是一个控按钮：</label>
+    <input type="button" value="空按钮" id="_button">
+
+    <script>
+    </script>
+
+
+
+
+    <script>
+        function Parents(name, age) {
+            this.name = name
+            this.age = age
+        }
+        Parents.prototype.showName = function() {
+            console.log(this.name)
+        }
+
+        function First() {
+            this.name = 'first'
+            this.age = 24
+        }
+        for (var i in Parents.prototype) {
+            First.prototype[i] = Parents.prototype[i]
+        }
+        // 完整的组合继承
+        function Second(name, age) {
+            // Parents.call(this, name, age)
+            Parents.apply(this, [name, age])
+        }
+        for (var i in Parents.prototype) {
+            Second.prototype[i] = Parents.prototype[i]
+        }
+
+        var third = new Second('zhangsan', 89)
+    </script>
+</body>
+<script>
+    // document.getElementById('_button').onclick(function () {
+    //   alert('我要护甲')
+    // })
+    // 变量的结构赋值
+    let [name, age, sex] = ['liww', 18, 'man']
+    // Array.from(set) 把Set结构转为数组
+    let set = {
+        size: 'Set实例的成员总数',
+        constructor: '构造函数, 默认指向Set函数',
+        操作方法: {
+            add: '添加某个值，返回set结构本身',
+            delete: '删除某个值，返回一个boolean, 表示删除是否成功',
+            has: 'return boolean, 表示该值是否为set成员',
+            clear: '清除所有成员，没有返回值'
+        },
+        遍历方法: {
+            keys: '返回键名遍历器',
+            values: '返回值遍历器',
+            enteries: '返回键值对遍历器',
+            forEach: '使用回调函数遍历每个成员'
+        }
+    }
+    let setData = new Set(['red', 'blue', 'blank'])
+        // console.log(setData.keys())
+        // console.log(setData.values())
+        // console.log(setData.entries())
+    let set1 = new Set([
+        ['name', 'liww'],
+        ['age', 18]
+    ])
+    console.log(set1)
+    let map = new Map([
+        ['name', 'liww']
+    ])
+    console.log(map)
+    let _map = {
+            property: {
+                size: 'Map结构的成员数'
+            },
+            '操作方法': {
+                set: 'set(key, value)',
+                get: 'get(key)',
+                has: 'has(key)',
+                delete: 'delete(key)',
+                clear: 'clear()'
+            },
+            '遍历方法': {
+                keys: 'keys()',
+                values: 'values()',
+                enteries: 'entries()',
+                forEach: 'forEach()'
+            }
+        }
+        // map.set('a', new Map(1, 'a'))
+
+    function* fibs() {
+            let [a, b] = [0, 1]
+            while (true) {
+                yield a
+                    [a, b] = [b, a + b]
+            }
+        }
+        // let [first, second, third, fourth, fifth, sixth] = fibs()
+        // sixth = 5
+
+    let {
+        foo,
+        bar
+    } = {
+        foo: 'aaa',
+        bar: 'bbb'
+    }
+    let obj = {
+        first: 'hello',
+        last: 'world'
+    }
+
+    let {
+        first: f,
+        last: l
+    } = obj
+
+    let {
+        p: [x, {
+            y
+        }]
+    } = {
+        p: ['hello', {
+            y: 'world'
+        }]
+    }
+
+
+
+    var str = 'abc'
+    str += 1
+        // var test = typeof(str)
+        // console.log(test)
+        // if (test.length === 6) {
+        //   test.sign = 'typeof 的返回结果'
+        // }
+        // console.log(test.sign)
+        // 原始值不能有自己的属性和方法
+    var a = 5
+
+    function test() {
+        a = 0
+        console.log(a)
+        console.log(this.a)
+        var a
+        console.log(a)
+    }
+    test()
+    let test1 = new test()
+
+
+
+
+    function aaaa() {
+        var bbb = 'bbbbb'
+        bbbbbb()
+    }
+
+    function bbbbbb() {
+        console.log(bbb)
+    }
+    aaaa()
+</script>
+
+</html>

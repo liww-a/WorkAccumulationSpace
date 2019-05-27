@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    // ES5用字符串做对象的属性名容易造成冲突，
+    // symbol是原始数据类型 第七种数据类型  undefined null boolean string number object symbol 
+
+    let obj = {
+        toString () {
+            return 'abc'
+        }
+    }
+    let symObj = Symbol(obj)
+
+    let obj1 = {
+        [Symbol('a')]: 'zhangsan',
+        [Symbol('a')]: 'lisi',
+        [Symbol('a')]: 'wangwu',
+        [Symbol('a')]: 'zhaoliu',
+        [Symbol('a')]: 'sunqi',
+        [Symbol('a')]: 'zhouba',
+        [Symbol('a')]: 'wujiu',
+        [Symbol('a')]: 'zhengshi'
+    }
+    // 可以转成字符串  和  Boolean  类型  但是不能跟其他类型的数据进行计算
+
+   let symbolKeys = Object.getOwnPropertySymbols(obj1)
+
+
+   let size = Symbol('size')
+   class Collection  {
+       constructor () {
+           this[size] = 0
+       }
+
+       add (item) {
+           this[this[size]] = item
+           this[size]++
+       }
+       static sizeOf (instance) {
+           return instance[size]
+       }
+   }
+
+
+   let x = new Collection()
+    </script>
+</body>
+</html>

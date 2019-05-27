@@ -1,0 +1,137 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "progressMilestone": {
+                "id": "1562380487462917",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "代建局项目",
+                "startDatePlan": 1493568000000,
+                "endDatePlan": 1525449600000,
+                "startDateReal": 1495036800000,
+                "endDateReal": 1525449600000,
+                "milestone": 1,
+                "critical": 1
+            },
+            "taskStatus": 2,
+            "taskStatusStr": "延迟开始",
+            "plantDate": 370,
+            "realDate": 353
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380540662790",
+                "parentId": "1562380487462917",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "土方开挖",
+                "startDatePlan": 1493740800000,
+                "endDatePlan": 1527091200000,
+                "startDateReal": 1526313600000,
+                "endDateReal": 1527609600000,
+                "milestone": 1,
+                "critical": 1
+            },
+            "taskStatus": 2,
+            "taskStatusStr": "延迟开始",
+            "plantDate": 387,
+            "realDate": 16
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380595208200",
+                "parentId": "1562380540662790",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "基础层及地下室结构施工",
+                "startDatePlan": 1525104000000,
+                "endDatePlan": 1527696000000,
+                "startDateReal": 1525104000000,
+                "endDateReal": 1527696000000,
+                "milestone": 1,
+                "critical": 0
+            },
+            "taskStatus": 1,
+            "taskStatusStr": "正常开始",
+            "plantDate": 31,
+            "realDate": 31
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380620553225",
+                "parentId": "1562380595208200",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "竖向结构施工",
+                "startDatePlan": 1525104000000,
+                "endDatePlan": 1527696000000,
+                "startDateReal": 1525104000000,
+                "endDateReal": 1527177600000,
+                "milestone": 1,
+                "critical": 0
+            },
+            "taskStatus": 1,
+            "taskStatusStr": "正常开始",
+            "plantDate": 31,
+            "realDate": 25
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380646295562",
+                "parentId": "1562380595208200",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "横向结构施工",
+                "startDatePlan": 1525104000000,
+                "endDatePlan": 1527696000000,
+                "startDateReal": 1525104000000,
+                "endDateReal": 1527696000000,
+                "milestone": 1,
+                "critical": 0
+            },
+            "taskStatus": 1,
+            "taskStatusStr": "正常开始",
+            "plantDate": 31,
+            "realDate": 31
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380567350279",
+                "parentId": "1562380487462917",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "筏板基础施工",
+                "startDatePlan": 1525104000000,
+                "endDatePlan": 1527609600000,
+                "startDateReal": 1526313600000,
+                "endDateReal": 1527523200000,
+                "milestone": 1,
+                "critical": 1
+            },
+            "taskStatus": 2,
+            "taskStatusStr": "延迟开始",
+            "plantDate": 30,
+            "realDate": 15
+        },
+        {
+            "progressMilestone": {
+                "id": "1562380487462917",
+                "parkId": "1557515556047872",
+                "bidAreaId": "1559379139479617",
+                "name": "代建局项目",
+                "startDatePlan": 1493568000000,
+                "endDatePlan": 1525449600000,
+                "startDateReal": 1495036800000,
+                "endDateReal": 1525449600000,
+                "milestone": 1,
+                "critical": 1
+            },
+            "taskStatus": 2,
+            "taskStatusStr": "延迟开始",
+            "plantDate": 370,
+            "realDate": 353
+        }
+    ]
+}

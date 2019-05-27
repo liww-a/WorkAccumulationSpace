@@ -1,0 +1,52 @@
+/* 图片居中 */
+
+.img {
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -60px;
+    margin-top: -20px;
+}
+
+
+/* 元素定义了position: fixed; 后怎么居中，不加宽高是全屏，加height 不加 width 是垂直居中，加width 不加 height 是水平居中 */
+
+div {
+    position: fixed;
+    width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* scss/less动态高度样式 */
+
+.box {
+    height: calc(100% -'389px');
+    height: -webkit-calc(100% - '389px');
+    height: -moz-calc(100% -'389px');
+    height: -ms-calc(100% - '389px')
+}
+
+/* 单行文本省略号设置 */
+
+.ellipsis {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* 清浮动 */
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}

@@ -1,0 +1,96 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "milestoneList": [
+            {
+                "id": "993188740433702920",
+                "projectId": "926269015943536640",
+                "milestoneName": "地基施工",
+                "planStartDate": 1486310400000,
+                "planEndDate": 1487088000000,
+                "realStartDate": 1486310400000,
+                "realEndDate": 1486828800000,
+                "delay": -3,
+                "orderNo": 8,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740437897221",
+                "projectId": "926269015943536640",
+                "milestoneName": "跑道施工",
+                "planStartDate": 1489334400000,
+                "planEndDate": 1490371200000,
+                "realStartDate": 1489334400000,
+                "realEndDate": 1490716800000,
+                "delay": 4,
+                "orderNo": 14,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740437897230",
+                "projectId": "926269015943536640",
+                "milestoneName": "主体结构（含附属）施工",
+                "planStartDate": 1493913600000,
+                "planEndDate": 1494518400000,
+                "realStartDate": 1493913600000,
+                "realEndDate": 1494518400000,
+                "delay": 0,
+                "orderNo": 19,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740442091529",
+                "projectId": "926269015943536640",
+                "milestoneName": "二次结构及屋面施工",
+                "planStartDate": 1498320000000,
+                "planEndDate": 1499011200000,
+                "realStartDate": 1498320000000,
+                "realEndDate": 1499443200000,
+                "delay": 5,
+                "orderNo": 28,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740446285825",
+                "projectId": "926269015943536640",
+                "milestoneName": "机电设备调试",
+                "planStartDate": 1502726400000,
+                "planEndDate": 1503590400000,
+                "realStartDate": 1502726400000,
+                "realEndDate": 1503936000000,
+                "delay": 4,
+                "orderNo": 35,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740446285832",
+                "projectId": "926269015943536640",
+                "milestoneName": "装饰装修施工",
+                "planStartDate": 1506268800000,
+                "planEndDate": 1507478400000,
+                "realStartDate": 1506268800000,
+                "realEndDate": 1507305600000,
+                "delay": -2,
+                "orderNo": 40,
+                "lastModifyDate": 1525629623000
+            },
+            {
+                "id": "993188740450480128",
+                "projectId": "926269015943536640",
+                "milestoneName": "竣工",
+                "planStartDate": 1511020800000,
+                "planEndDate": 1512403200000,
+                "realStartDate": 1510934400000,
+                "realEndDate": 1512230400000,
+                "delay": -2,
+                "orderNo": 45,
+                "lastModifyDate": 1525629623000
+            }
+        ],
+        "contractStartDate": 1483545600000,
+        "currDate": 1512403200000,
+        "startDate": 1484409600000
+    },
+    "throwable": null
+}

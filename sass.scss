@@ -1,0 +1,63 @@
+
+// 属性 和 选择器嵌套是非常伟大的特性
+
+// 组合选择器:   同层组合选择器 ~ +  和  子组合选择器 >
+article {
+    ~ .article{ // 选择所有跟在article 后的同层 .article类的元素
+        border-top: 1px dashed #ccc;
+    }
+    > .section{ //选择article下所有的 .section 直接子元素
+        background: #eee;
+    }
+    dl > {
+        dt {
+            color: #ccc;
+        }
+        dd {
+            color: #000;
+        }
+    }
+    nav + & { // 选择nav 后面紧跟着的 article 元素
+         margin-top: 0
+    }
+}
+
+// 属性嵌套
+
+div {
+    border{ // border 属性的嵌套用法
+        style: sloid;
+        width: 1px;
+        color: #ccc;
+    }; 
+    border: 1px solid #ccc {
+        left: 2px;
+        right: 0px;
+    }
+}
+
+// 混合器
+// 声明
+@mixin rounded-corners {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+// 使用
+@include rounded-corners;
+
+// 合适应该使用混合器
+// 如果你发现自己在不停地重复一段样式 并且这段样式本身就是一个逻辑单元
+// 混合器的name  是效果语义化
+// 混合器包容css规则
+
+// 例如：
+@mixin no-bullets {
+    list-style: none;
+    li {
+        list-style-image: none;
+        list-style-type: none;
+        margin-left: 0px;
+    }
+}
+@include no-bullets;

@@ -1,0 +1,27 @@
+
+生成函数注释  Ctrl+Alt+D 加上  Ctrl+Alt+D
+文件头部注释  Ctrl+Alt+i
+打开vscode新窗口  Ctrl+Shift+N
+快速返回桌面   window + D
+关闭全部打开的文件  Ctrl + K + W
+显示所有命令  Ctrl + Shift + P
+转到文件  Ctrl + T
+在文件中  Ctrl + Shift + F
+开始调试  F5
+切换终端  Ctrl + `
+替换      Ctrl + H
+
+生成作者信息 Ctrl + Alt + i
+
+html 模块注释  html-a
+css 分割注释   css-z
+js 分割注释   js-a
+console.log   log
+css 兼容height   my-height
+
+
+快速打开搜索命令框   F1  /   Ctrl + Shift + p
+
+JavaScript(es6) code snippets
+Add jsdoc comments  注释插件
+生成函数 注释  选中函数以及所传参数   Ctrl + Shift + p 选中 Add jsdoc comments 按回车键  
