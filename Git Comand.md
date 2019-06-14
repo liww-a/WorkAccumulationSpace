@@ -74,6 +74,7 @@ yarn config set registry https://registry.npm.taobao.org
 ###或者切换为自带的
 yarn config set registry https://registry.yarnpkg.com
 
+<!-- yarn 命令 -->
 yarn install
 
 yarn run serve
