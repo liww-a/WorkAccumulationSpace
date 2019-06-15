@@ -105,3 +105,30 @@ www.debuggap.com
 下载安装 软件  并且把debuggap.js 存放到项目中，然后再引入 index.html 中
 
 打开工具 ---> web调试工具---> 调试H5---> 点击蓝色小方块---> 在大方块中的config 中输入ip
+
+
+###测试环境 发版
+10.0.197.96   
+用户名：root
+密码：www.zx.c0m
+
+44环境项目目录：
+cd /opt/bim5d/bim5d-web/modules/commerce
+
+上传文件：
+rz -y
+
+删除文件 递归删除：
+rm -rf enterprise
+
+解压到当前文件夹：
+unzip dist.zip -d .  / unzip -o dist.zip -d .
+
+重命名为：
+mv old enterprise
+
+pwd 查看当前路径
+
+
+npm set registry http://10.129.56.220:4873
+rm -rf  /root/.tmp/platform-commerce-enterprise

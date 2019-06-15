@@ -5,47 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+    
+        .test {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #87CEEB;
+            display: inline-block;
+            vertical-align: top;
+        }
+    
+    
+        canvas {
+            margin-right: 5px;
+        }
+    
+    
+        .down {
+            float: left;
+            margin: 40px 10px;
+        }
+    
+        .down2 {
+            float: left;
+            margin: 40px 30px;
+        }
+    </style>
+
 </head>
 <body>
-   <script>
-    //    new 关键字是用来继承的. 面向对象的基础
-    function Person (name, age) {
-        this.name = name
-        this.age = age
-    }
-    Person.prototype = {
-        ablility: 1000,
-        sayName: function () {
-            alert(this.name)
-        }
-    }
-    let person1 = new Person('liwenwen', 25)
-    person1.sayName()
+    <!-- <img src="D:\需求文档/QQ图片20190605105121.jpg" alt="" srcset=""/> -->
+    <div class="test">测试</div>
+    <div>
+        <a class="down" href="" download="downImg">下载</a>
+    </div>
+    <div><a class="down2" href="" download="downImg">下载2</a></div>
+<script>
+    //直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
+    //html2canvas(document.querySelector('div')).then(function(canvas) {
+    //    document.body.appendChild(canvas);
+    //});
+    //创建一个新的canvas
+    var canvas2 = document.createElement("canvas");
     
-    // 使用new关键字生成的类具有两个特点1：访问到构造函数中的属性2：访问到构造函数的prototype对象中的对象
-    // 如何实现的？
-    // 解决1：经典继承（借用构造函数的方式）
-    function Parent () {
-        this.name = ['derry', 'qiqi']
-    }
-    function Child () {
-        Parent.call(this)
-    }
-    var child1 = new Child()
-    child1.name.push('djajgfd')
-    var child2 = new Child()
-    // 通过Parent.call 或则 apply 这样的方式让child具有parent的属性
-    // 2.怎么获取原型链上的属性呢？ __proto__
-    function Dnew () {
-        var obj = {} // 创建空对象
-        Constructor = [].shift.call(arguments) // shift 取出arguments中的第一个参数。也就是我们传入的构造函数
-        obj.__proto__ = Constructor.prototype // 将obj的原型链指向构造函数。 这样obj就可以访问到构造函数原型链上的属性了
-        Constructor.apply(obj, arguments) // 使用apply/call 改变构造函数 this的指向 指向到新建的对象， 这样obj可以访问到构造函数的属性
-        return obj // 返回对象
-    }
-    // shift 始终删除数组的第一个元素， 返回被删除的元素
-    // 学到 44分钟了
-    
-   </script>
+    let
+        _canvas = document.querySelector('div');
+    var w = parseInt(window.getComputedStyle(_canvas).width);
+    var h = parseInt(window.getComputedStyle(_canvas).height);
+    //将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
+    canvas2.width = w * 2;
+    canvas2.height = h * 2;
+    canvas2.style.width = w + "px";
+    canvas2.style.height = h + "px";
+    //可以按照自己的需求，对context的参数修改,translate指的是偏移量
+    //  var context = canvas.getContext("2d");
+    //  context.translate(0,0);
+    var context = canvas2.getContext("2d");
+    context.scale(2, 2);
+    html2canvas(document.querySelector('div'), { canvas: canvas2 }).then(function (canvas) {
+        //document.body.appendChild(canvas);
+        //canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
+        document.querySelector(".down").setAttribute('href', canvas.toDataURL());
+    });
+
+
+
+
+
+
+</script>
 </body>
 </html>
