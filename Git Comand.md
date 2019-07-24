@@ -133,3 +133,7 @@ pwd 查看当前路径
 
 npm set registry http://10.129.56.220:4873
 rm -rf  /root/.tmp/platform-commerce-enterprise
+
+
+
+6225 7583 1927 0558

@@ -6,7 +6,7 @@
 //             'width=0,height=0,top=4000,left=4000'); //新窗口将在视区之外打开 
 //         newWindow.opener = null;
 //         sleep(5000); //执行休眠操作以便能够处理完新打开窗口执行代码 
-//         newWindow.close(); //新窗口关闭 
+//         newWindow.close(); //新窗口关闭
 //     }
 // }
 
@@ -76,34 +76,34 @@ var option = {
         // },
         {
             name: '销量',
-            type: 'pie',
+            type: 'line',
             label: {
                 show: true,
                 position: 'outside'
             },
             data: [
                 {
-                    name: '衬衫',
+                    // name: '衬衫',
                     value: 5
                 },
                 {
-                    name: '羊毛衫',
+                    // name: '羊毛衫',
                     value: 20
                 },
                 {
-                    name: '雪纺衫',
+                    // name: '雪纺衫',
                     value: 36
                 },
                 {
-                    name: '裤子',
+                    // name: '裤子',
                     value: 10
                 },
                 {
-                    name: '高跟鞋',
+                    // name: '高跟鞋',
                     value: 10
                 },
                 {
-                    name: '袜子',
+                    // name: '袜子',
                     value: 20
                 }
             ]
