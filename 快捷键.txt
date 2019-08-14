@@ -1,5 +1,5 @@
 
-生成函数注释  Ctrl+Alt+D 加上  Ctrl+Alt+D
+生成函数注释  Ctrl+Alt+D 加上  Ctrl+Alt+D / Ctrl+Alt+t
 文件头部注释  Ctrl+Alt+i
 打开vscode新窗口  Ctrl+Shift+N
 快速返回桌面   window + D
@@ -25,3 +25,13 @@ css 兼容height   my-height
 JavaScript(es6) code snippets
 Add jsdoc comments  注释插件
 生成函数 注释  选中函数以及所传参数   Ctrl + Shift + p 选中 Add jsdoc comments 按回车键  
+
+视图放大 Ctrl + =
+试图缩小 Ctrl + -
+打开上一个编辑器窗口   Ctrl + PageUp
+打开下一个编辑器窗口   Ctrl + PageDown
+向上复制行   shift + alt + up
+向上复制行   ctrl + shift  + d
+
+
+
