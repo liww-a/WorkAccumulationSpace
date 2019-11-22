@@ -5,154 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <style>
+        * {
+            margin: 0;
+        }
+        .test {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #87CEEB;
+            display: inline-block;
+            vertical-align: top;
+        }
+        canvas {
+            margin-right: 5px;
+        }
+    </style>
 <body>
-   <script>
-    //    new 关键字是用来继承的. 面向对象的基础
-    function Person (name, age) {
-        this.name = name
-        this.age = age
-    }
-    Person.prototype = {
-        ablility: 1000,
-        sayName: function () {
-            // alert(this.name)
-        }
-    }
-    let person1 = new Person('liwenwen', 25)
-    person1.sayName()
-    
-    // 使用new关键字生成的类具有两个特点1：访问到构造函数中的属性2：访问到构造函数的prototype对象中的对象
-    // 如何实现的？
-    // 解决1：经典继承（借用构造函数的方式）
-    function Parent () {
-        this.name = ['derry', 'qiqi']
-    }
-    function Child () {
-        Parent.call(this)
-    }
-    var child1 = new Child()
-    child1.name.push('djajgfd')
-    var child2 = new Child()
-    // 通过Parent.call 或则 apply 这样的方式让child具有parent的属性
-    // 2.怎么获取原型链上的属性呢？ __proto__
-    function Dnew () {
-        var obj = {} // 创建空对象
-        Constructor = [].shift.call(arguments) // shift 取出arguments中的第一个参数。也就是我们传入的构造函数
-        obj.__proto__ = Constructor.prototype // 将obj的原型链指向构造函数。 这样obj就可以访问到构造函数原型链上的属性了
-        Constructor.apply(obj, arguments) // 使用apply/call 改变构造函数 this的指向 指向到新建的对象， 这样obj可以访问到构造函数的属性
-        return obj // 返回对象
-    }
-    // shift 始终删除数组的第一个元素， 返回被删除的元素
-    // 学到 44分钟了
-    
-   </script>
-   <script>
-       function fn () {
-           console.log(fn)
-       }
-    //    每一个函数都是一个对象, 对象中有些属性可以访问,有些不可以,这些不可以访问的属性,仅供JavaScript引擎存取, [[scope]] 就是其中的一个.
-    // [[scope]]就是 作用域, [[scope]]中存取着 函数 执行期上下文对象 的集合,
-    // 执行期上下文对象成链式连接 即 作用域链
-    //    console.log(fn.prototype)
-    //    实例的prototype属性 指向了 构造函数
 
-
-
-    function River () {
-        this.width = '5m'
-        this.length = '1000m'
-    }
-    River.prototype.flow = function () {
-        // console.log('I can flow')
-    }
-    let changJiang = new River()
-    
-    // 构造函数的原型对象,最少有两个属性(constructor, __proto__)
-    changJiang.name = 'changjiang river'
-    changJiang.toString()
-    changJiang.toLocaleString()
-    
-    function Vegetables (color, season) {
-        this.color = color
-        this.season = season
-    }
-    Vegetables.prototype.name = 'carrot'
-    Vegetables.prototype.way = 'fry'
-
-    const shallot = new Vegetables('purple', 'summer')
-    const carrot = new Vegetables('yellow', 'autumn')
-    // javaScript 中object & function 也是变量
-    // JavaScript 拥有函数作用域:每个函数创建一个新的作用域
-
-    // 方法是可以在对象执行的动作
-    // 万物皆对象, 属性是对象的说明,方法是对象的功能
-    // 属性指的是 JavaScript 对象相关的值, JavaScript 对象是无序属性的集合
-    // 实例一档成功,各实例之间就没什么关系了
-    // delete 关键字不会删除被继承的属性. 但是如果您删除了某个原型属性, 则将影响到所有从原型继承的对象
-    // 通过delete 删除实例 的属性不会影响构造函数的
-
-    const cabbage = {
-        name: 'cabbage',
-        color: 'green',
-        get shape() {
-            return 'shpere'
-        }
-    }
-    
-
-    const obj = {
-        counter: 0,
-        // get reset () {
-        //     return this.counter = 0
-        // },
-        // get increment () {
-        //     return this.counter++
-        // },
-        // get decrement () {
-        //     return this.counter--
-        // },
-        // set addition (value) {
-        //     this.counter += value
-        // },
-        // set subtract (value) {
-        //     this.counter -= value
-        // },
-        // get time () {
-        //     return Date.now()
-        // }
-    }
-    Object.defineProperty(obj, 'reset', {
-        get: function () {
-            return this.counter = 0
-        }
-    })
-    Object.defineProperty(obj, 'increment', {
-        get: function () {
-            return this.counter ++
-        }
-    })
-    Object.defineProperty(obj, 'addition', {
-        set: function (value) {
-            ths.counter++
-        }
-    })
-    // Object.defineProperty(obj, 'name', {
-    //     value: 'counter'
-    // })
-    Object.defineProperties(obj, {
-        name: {value: 'counter'},
-        lifeTime: {value: 3}
-    })
-
-
-    Object.getOwnPropertyDescriptor(obj, 'name')
-    Object.getOwnPropertyNames(obj) // 以数组返回所有属性
-    Object.keys(obj) // 以数组形式返回可枚举的属性
-
-
-    const cars = [2,8,9,0,3,5,7]
-    console.log(cars.sort());
-   </script>
 </body>
+<script>
+    function fn () {
+        console.log(fn)
+    }
+//    每一个函数都是一个对象, 对象中有些属性可以访问,有些不可以,这些不可以访问的属性,仅供JavaScript引擎存取, [[scope]] 就是其中的一个.
+// [[scope]]就是 作用域, [[scope]]中存取着 函数 执行期上下文对象 的集合,
+// 执行期上下文对象成链式连接 即 作用域链
+//    console.log(fn.prototype)
+//    实例的prototype属性 指向了 构造函数
+function River () {
+    this.width = '5m'
+    this.length = '1000m'
+}
+River.prototype.flow = function () {
+}
+let changJiang = new River()
+
+// 构造函数的原型对象,最少有两个属性(constructor, __proto__)
+changJiang.name = 'changjiang river'
+changJiang.toString()
+changJiang.toLocaleString()
+
+function Vegetables (color, season) {
+    this.color = color
+    this.season = season
+}
+Vegetables.prototype.name = 'carrot'
+Vegetables.prototype.way = 'fry'
+
+const shallot = new Vegetables('purple', 'summer')
+const carrot = new Vegetables('yellow', 'autumn')
+// javaScript 中object & function 也是变量
+// JavaScript 拥有函数作用域:每个函数创建一个新的作用域
+
+// 方法是可以在对象执行的动作
+// 万物皆对象, 属性是对象的说明,方法是对象的功能
+// 属性指的是 JavaScript 对象相关的值, JavaScript 对象是无序属性的集合
+// 实例一档成功,各实例之间就没什么关系了
+// delete 关键字不会删除被继承的属性. 但是如果您删除了某个原型属性, 则将影响到所有从原型继承的对象
+// 通过delete 删除实例 的属性不会影响构造函数的
+
+const cabbage = {
+    name: 'cabbage',
+    color: 'green',
+    get shape() {
+        return 'shpere'
+    }
+}
+
+Object.getOwnPropertyDescriptor(obj, 'name')
+Object.getOwnPropertyNames(obj) // 以数组返回所有属性
+Object.keys(obj) // 以数组形式返回可枚举的属性
+</script>
 </html>

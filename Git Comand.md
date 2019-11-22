@@ -133,3 +133,32 @@ npm list --depth 0 node_modules展开到一级
 
 
 
+###测试环境 发版
+10.0.197.96   
+用户名：root
+密码：www.zx.c0m
+
+44环境项目目录：
+cd /opt/bim5d/bim5d-web/modules/commerce
+
+上传文件：
+rz -y
+
+删除文件 递归删除：
+rm -rf enterprise
+
+解压到当前文件夹：
+unzip dist.zip -d .  / unzip -o dist.zip -d .
+
+重命名为：
+mv old enterprise
+
+pwd 查看当前路径
+
+
+npm set registry http://10.129.56.220:4873
+rm -rf  /root/.tmp/platform-commerce-enterprise
+
+
+
+6225 7583 1927 0558
