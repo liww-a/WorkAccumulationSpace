@@ -1,3 +1,10 @@
+<!--
+ * @Author: li wenwen
+ * @Date: 2019-07-26 08:54:18
+ * @LastEditors: li wenwen
+ * @LastEditTime: 2019-08-28 19:39:45
+ * @Description: 
+ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +12,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 200px;
+            background: #0000ff;
+            /* transform: translate(100px, 20px); */
+            /* transform: rotate(30deg); */
+            /* transform: scale(1, 2); */
+            transform: skew(0, 10deg);
+        }
+    
+    
+    </style>
 </head>
 <body>
+    <div class="box"></div>
     <script>
     // 量词
     // n+ 可以出现 1 - 正无穷
@@ -15,11 +36,21 @@
     // n{x} x个
     // n{x,y} x - y 个
     // n{x,} x - 正无穷
+
      
         
+        var arr = []
+        var x = [1, 2, 4, 5, 7]
+        var y = [1, 2, 4, 6, 7]
+        var z = [4, 5, 6, 7, 9]
         
-        
-        
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                for (let k = 0; k < 5; k++) {
+                    (x[i] + y[j] + z[k] === 17) && arr.push([x[i], y[j], z[k]])
+                }
+            }
+        }
         
     </script>
 </body>

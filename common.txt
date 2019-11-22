@@ -6,3 +6,66 @@
           3)  默认会覆盖非定位元素上
   不同点： absolute 的根元素可以设置， fixed的根元素不可设置
 
+
+three.js  http://www.hewebgl.com/article/getarticle/50
+https://km.glodon.com/pages/viewpage.action?pageId=37661464
+
+scene camera renderer
+
+new THREE.Scene() 
+
+
+WebGL 是一种 3D 绘图标准，这种绘图技术标准允许把 JavaScript 和 OpenGL ES 2.0 结合在一起，通过增加 OpenGL ES 2.0 的一个 JavaScript 绑定，
+WebGL 可以为 HTML5 Canvas 提供硬件 3D 加速渲染，这样 Web 开发人员就可以借助系统显卡来在浏览器里更流畅地展示3D场景和模型了，还能创建复杂的导航和数据视觉化。
+
+
+canvas 
+<canvas> 是一个可以使用脚本(通常为JavaScript)来绘制图形的 HTML 元素.
+例如,它可以用于绘制图表、制作图片构图或者制作简单的(以及不那么简单的)动画
+
+
+
+
+WebGL
+简介
+渲染原理
+
+
+
+three.js
+
+
+1,  准备WebGL 上下文/初始化WebGL 上下文（webGLRenderingContext)
+  function main() {
+    const canvas = document.querySelector("#glcanvas");
+    // Initialize the GL context
+    const gl = canvas.getContext("webgl");
+
+    // Only continue if WebGL is available and working
+    if (!gl) {
+      alert("Unable to initialize WebGL. Your browser or machine may not support it.");
+      return;
+    }
+
+    // Set clear color to black, fully opaque
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    // Clear the color buffer with specified clear color
+    gl.clear(gl.COLOR_BUFFER_BIT);
+  }
+2, 渲染场景
+  着色器：着色器是使用 OpenGL ES Shading Language(GLSL)编写的程序，它携带着绘制形状的顶点信息以及构造绘制在屏幕上像素的所需数据，换句话说，它负责记录着像素点的位置和颜色。
+  分两种：
+  顶点着色器：每次渲染一个形状时，顶点着色器会在形状中的每个顶点运行。它的工作是将输入顶点从原始坐标系转换到WebGL使用的缩放空间(clipspace)坐标系，
+            其中每个轴的坐标范围从-1.0到1.0，并且不考虑纵横比，实际尺寸或任何其他因素。
+  片元着色器：在顶点着色器处理完图形的顶点后，会被要绘制的每个图形的每个像素点调用一次。它的职责是确定像素的颜色，通过指定应用到像素的纹理元素（也就是图形纹理中的像素），
+            获取纹理元素的颜色，然后将适当的光照应用于颜色。之后颜色存储在特殊变量gl_FragColor中，返回到WebGL层。
+3, 初始化着色器
+  1). 调用gl.createShader().创建一个新的着色器。
+  2). 调用gl.shaderSource().将源代码发送到着色器。
+  3). 一旦着色器获取到源代码，就使用gl.compileShader().进行编译
+  4). 为了检查是否成功编译了着色器，
+  5). 如果着色器被加载并成功编译，则返回编译的着色器。
+4, 初始化缓存区对象
+note: glmatrix.js always has the first argument as the destination to receive the result.
+
+

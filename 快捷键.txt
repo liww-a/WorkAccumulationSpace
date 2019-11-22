@@ -33,5 +33,12 @@ Add jsdoc comments  注释插件
 向上复制行   shift + alt + up
 向上复制行   ctrl + shift  + d
 
+vs-code 编辑器
+返回文件资源管理器视图 Ctrl + Shift + E
 
 
+打开有道词典  Ctrl + Alt + X
+打开mini窗口  Ctrl + Alt + M
+添加/删除单词 Ctrl + Alt + S
+单词发音      Ctrl + Alt + J
+截屏翻译      Ctrl + Alt + D
