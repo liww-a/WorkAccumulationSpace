@@ -11,7 +11,6 @@
         * {
             margin: 0;
         }
-    
         .test {
             width: 100px;
             height: 100px;
@@ -21,65 +20,64 @@
             display: inline-block;
             vertical-align: top;
         }
-    
-    
         canvas {
             margin-right: 5px;
         }
-    
-    
-        .down {
-            float: left;
-            margin: 40px 10px;
-        }
-    
-        .down2 {
-            float: left;
-            margin: 40px 30px;
-        }
     </style>
-
-</head>
 <body>
-    <!-- <img src="D:\需求文档/QQ图片20190605105121.jpg" alt="" srcset=""/> -->
-    <div class="test">测试</div>
-    <div>
-        <a class="down" href="" download="downImg">下载</a>
-    </div>
-    <div><a class="down2" href="" download="downImg">下载2</a></div>
-<script>
-    //直接选择要截图的dom，就能截图，但是因为canvas的原因，生成的图片模糊
-    //html2canvas(document.querySelector('div')).then(function(canvas) {
-    //    document.body.appendChild(canvas);
-    //});
-    //创建一个新的canvas
-    var canvas2 = document.createElement("canvas");
-    
-    let
-        _canvas = document.querySelector('div');
-    var w = parseInt(window.getComputedStyle(_canvas).width);
-    var h = parseInt(window.getComputedStyle(_canvas).height);
-    //将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
-    canvas2.width = w * 2;
-    canvas2.height = h * 2;
-    canvas2.style.width = w + "px";
-    canvas2.style.height = h + "px";
-    //可以按照自己的需求，对context的参数修改,translate指的是偏移量
-    //  var context = canvas.getContext("2d");
-    //  context.translate(0,0);
-    var context = canvas2.getContext("2d");
-    context.scale(2, 2);
-    html2canvas(document.querySelector('div'), { canvas: canvas2 }).then(function (canvas) {
-        //document.body.appendChild(canvas);
-        //canvas转换成url，然后利用a标签的download属性，直接下载，绕过上传服务器再下载
-        document.querySelector(".down").setAttribute('href', canvas.toDataURL());
-    });
 
-
-
-
-
-
-</script>
 </body>
+<script>
+    function fn () {
+        console.log(fn)
+    }
+//    每一个函数都是一个对象, 对象中有些属性可以访问,有些不可以,这些不可以访问的属性,仅供JavaScript引擎存取, [[scope]] 就是其中的一个.
+// [[scope]]就是 作用域, [[scope]]中存取着 函数 执行期上下文对象 的集合,
+// 执行期上下文对象成链式连接 即 作用域链
+//    console.log(fn.prototype)
+//    实例的prototype属性 指向了 构造函数
+function River () {
+    this.width = '5m'
+    this.length = '1000m'
+}
+River.prototype.flow = function () {
+}
+let changJiang = new River()
+
+// 构造函数的原型对象,最少有两个属性(constructor, __proto__)
+changJiang.name = 'changjiang river'
+changJiang.toString()
+changJiang.toLocaleString()
+
+function Vegetables (color, season) {
+    this.color = color
+    this.season = season
+}
+Vegetables.prototype.name = 'carrot'
+Vegetables.prototype.way = 'fry'
+
+const shallot = new Vegetables('purple', 'summer')
+const carrot = new Vegetables('yellow', 'autumn')
+// javaScript 中object & function 也是变量
+// JavaScript 拥有函数作用域:每个函数创建一个新的作用域
+
+// 方法是可以在对象执行的动作
+// 万物皆对象, 属性是对象的说明,方法是对象的功能
+// 属性指的是 JavaScript 对象相关的值, JavaScript 对象是无序属性的集合
+// 实例一档成功,各实例之间就没什么关系了
+// delete 关键字不会删除被继承的属性. 但是如果您删除了某个原型属性, 则将影响到所有从原型继承的对象
+// 通过delete 删除实例 的属性不会影响构造函数的
+
+const cabbage = {
+    name: 'cabbage',
+    color: 'green',
+    get shape() {
+        return 'shpere'
+    }
+}
+
+Object.getOwnPropertyDescriptor(obj, 'name')
+Object.getOwnPropertyNames(obj) // 以数组返回所有属性
+Object.keys(obj) // 以数组形式返回可枚举的属性
+</script>
 </html>

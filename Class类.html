@@ -19,6 +19,7 @@
             }
         }
         let ming = new Person('xiaoming', 20)
+        console.log(ming.__proto___)
         // 2.严格模式
         // 3.constructor方法
         class Animal {
@@ -104,13 +105,13 @@
     
         // 13.Class 的静态属性 和 实例属性
         // 14.new.target属性
-        function Person (name) {
-            if (new.target !== undefined) {
-                this.name = name
-            } else {
-                throw new Error('必须使用 new 命令生成实例')
-            }
-        }
+        // function Person (name) {
+        //     if (new.target !== undefined) {
+        //         this.name = name
+        //     } else {
+        //         throw new Error('必须使用 new 命令生成实例')
+        //     }
+        // }
 
         // 15.class继承简介
         // 16.Object.getPropertyOf()
@@ -118,6 +119,13 @@
         // 18.类的 prototype 属性 和 __proto__ 属性
         // 19.原生构造函数的继承
         // 20.Mixin 模式的实现
+    
+    </script>
+    <script>
+    (function () {
+
+    }())
+    
     
     </script>
 </body>

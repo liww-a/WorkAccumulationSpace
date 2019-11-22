@@ -473,6 +473,7 @@ function keyCode(event) {
     return keyCode
 }
 
+<<<<<<< HEAD
 
 export default function _asyncToGenerator(fn) {
     return function () {
@@ -493,3 +494,14 @@ export default function _asyncToGenerator(fn) {
         });
     };
 }
+=======
+// 计算字符串字节
+// 根据unicode 0-255 占一个byte  256-- 占2个bytes
+function getBytesd (str) {
+    let bytes = str.length
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 255) bytes++
+    }
+    return bytes
+}
+>>>>>>> 2dae1c18489a6c03ba02f44c63e04506b0dbbb90

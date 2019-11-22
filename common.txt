@@ -68,4 +68,49 @@ three.js
 4, 初始化缓存区对象
 note: glmatrix.js always has the first argument as the destination to receive the result.
 
+3. 常见宏任务
+    script 全部代码,
+    setTimeout,
+    setInterval,
+    setImmediate(node 独有),
+    requesAnimationFrame(浏览器独有),
+    I/O,
+    UI rendering(浏览器独有)
+4. 常见微任务
+    process.nextTick( node 独有),
+    Promise.then()
+    Object.observe (废弃)
+    MutationObserver
+    (注意: Promise 构造函数里的代码是同步执行的)
+
+ window.requestIdleCallback(function (idleDeadline) {})
+
+ 递归 处理业务的逻辑符合人的逻辑, 除了让代码简洁,没有任何好处, 先执行的最后才能执行完
+
+
+ 浏览器渲染JS 过程,,,, 第一步: 通篇语法分析,　 第二步:预编译，第三步：解释一行执行一行
+
+ 预编译：
+ 函数声明整体提升，变量　声明提升
+
+ 暗示全局变量: 即任何变量未经声明就赋值,此变量即为全局对象所有.
+ 一切声明的全局变量,都是window的属性,
+
+ 预编译过程:
+ 1, 创建AO(Activation Object) 对象(执行期上下文)
+ 2,找形参和变量声明, 把形参和变量名作为AO的属性名, 并赋值为undefined
+ 3,将实参值和形参统一,
+ 4,在函数体里面找函数声明, 值为函数体
+
+
+ bind 绑定函数但不立即执行   example:  let fn2 = fn1.bind(object1, object2, object2)
+
+ 预编译  作用域 作用域链  闭包
+
+ 构造函数最后return  引用值  会把隐式的return 覆盖,, 如果是原始值 则没有任何影响
+
+
+包装类过程： 原始值不能有属性和方法
+
+
 

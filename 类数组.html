@@ -10,89 +10,145 @@
             margin: 0;
             padding: 0;
         }
-        ul, li{
-            list-style: none;
+        .container {
+            width: 100%;
+            height: 900px;
         }
-        a{
-            text-decoration: none;
+        ul, li {
+            list-style-type: none;
         }
-        img{
-            border: 0;
-            display: block;
-            vertical-align: top;
+        .list {
+            padding: 50px 0 0 100px;
+            width: 20%;
+            height: 100%;
+            float: left;
         }
-        i, em{
-            font-style: normal;
+        .item {
+            height: 28px;
+            line-height: 28px;
+            cursor: pointer;
+            width: 40%;
+            font-size: 20px;
         }
-        a, input {
-            outline: none;
+        .item:hover {
+            color: blue;
         }
-        .box{
-            width: 100px;
-            height: 100px;
-            background-color: #f00;
-            transition: width 3s, height 3s;
-        }
-        .box:hover{
-            width: 500px;
-            height: 500px;
+        .box {
+            width: 60%;
+            height: 100%;
+            float: left;
+            margin-top: 50px;
+            /* margin: 50px auto; */
         }
     </style>
 </head>
 <body>
-    <div class="box">
-
+    <div class="container">
+        <ul class="list">
+            <li class="item" index="1">计算机组成原理1</li>
+            <li class="item" index="2">计算机组成原理2</li>
+            <li class="item" index="3">计算机组成原理3</li>
+            <li class="item" index="4">计算机组成原理4</li>
+            <li class="item" index="5">计算机组成原理5</li>
+            <li class="item" index="6">计算机组成原理6</li>
+            <li class="item" index="7">计算机组成原理7</li>
+            <li class="item" index="8">计算机组成原理8</li>
+            <li class="item" index="9">计算机组成原理9</li>
+            <li class="item" index="10">计算机组成原理10</li>
+            <li class="item" index="11">计算机组成原理11</li>
+            <li class="item" index="12">计算机组成原理12</li>
+            <li class="item" index="13">计算机组成原理13</li>
+            <li class="item" index="14">计算机组成原理14</li>
+            <li class="item" index="15">计算机组成原理15</li>
+            <li class="item" index="16">计算机组成原理16</li>
+            <li class="item" index="17">计算机组成原理17</li>
+            <li class="item" index="18">计算机组成原理18</li>
+            <li class="item" index="19">计算机组成原理19</li>
+            <li class="item" index="20">计算机组成原理20</li>
+            <li class="item" index="21">计算机组成原理21</li>
+            <li class="item" index="22">计算机组成原理22</li>
+            <li class="item" index="23">计算机组成原理23</li>
+            <li class="item" index="24">计算机组成原理24</li>
+            <li class="item" index="25">计算机组成原理25</li>
+            <li class="item" index="26">计算机组成原理26</li>
+            <li class="item" index="27">计算机组成原理27</li>
+            <li class="item" index="28">计算机组成原理28</li>
+            <li class="item" index="29">计算机组成原理29</li>
+            <li class="item" index="30">计算机组成原理30</li>
+            <li class="item" index="31">计算机组成原理31</li>
+            <li class="item" index="32">计算机组成原理32</li>
+            <li class="item" index="33">计算机组成原理33</li>
+            <li class="item" index="34">计算机组成原理34</li>
+            <li class="item" index="35">计算机组成原理35</li>
+            <li class="item" index="36">计算机组成原理36</li>
+            <li class="item" index="37">计算机组成原理37</li>
+            <li class="item" index="38">计算机组成原理38</li>
+            <li class="item" index="39">计算机组成原理39</li>
+            <li class="item" index="40">计算机组成原理40</li>
+            <li class="item" index="41">计算机组成原理41</li>
+        </ul>
+        <div class="box">
+            <iframe height="100%" width="100%" id="J_iframe"
+                src="//player.youku.com/embed/XMTk4ODIyMjg=?client_id=86e0a05df679eac9&amp;autoplay=true&amp;show_related=0"
+                frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
     <script>
-        // var oDiv = document.getElementsByClassName('box')[0]
-        // sport(oDiv, 'width', 1000)
-        function sport (obj, attr, target) {
-            clearInterval(obj.timer)
-            obj.timer = setInterval(function () {
-                var cur = 0
-                if (attr === 'opacity') {
-                    cur = parseInt(parseFloat(getStyle(obj, attr)) * 100)
-                } else {
-                    cur = parseInt(getStyle(obj, attr))
-                }
-                var speed = (target - cur) / 888
-                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
-                if (cur === target) {
-                    clearInterval(obj.timer)
-                } else {
-                    if (attr === 'opacity') {
-                        obj.style.filter = 'alpha(opacity=' + (cur + speed) + ')'
-                        obj.style.opacity = (cur + speed) / 100 
-                    } else {
-                        obj.style[attr] = cur + speed + 'px'
-                    }
-                }
-            }, 10)
+        window.onload = function () {
+            let data = [
+                '//player.youku.com/embed/XMTk4ODIyMjg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODI3NTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODMzMDQ=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODM4MTY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODQ0MDA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODUwNzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODU3ODQ=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODY0MjQ=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODcyNDQ=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODgwNjg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODg5MzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4ODk3MTY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4OTEwNzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4OTI5ODA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk4OTQwNTY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5MzU3MTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5Mzc2NTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5Mzk2NjA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NDExMzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzAxMjg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzExNzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzIwODA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzMwNjA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzQzNDg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5NzU2NjQ=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODAzNjA=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODExODg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODE5MzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODI2MDg=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODQzOTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODUyNTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODYyNzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODg1MTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5ODkwNzI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTAxMTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTA5NzI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTE5NzI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTMwOTI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTQwMzI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTQ4MzI=?client_id=86e0a05df679eac9&autoplay=true&show_related=0',
+                '//player.youku.com/embed/XMTk5OTU1NzY=?client_id=86e0a05df679eac9&autoplay=true&show_related=0'
+            ]
+            let iframe = document.getElementById('J_iframe')
+            let item = document.getElementsByClassName('item')
+            
+            let list = document.getElementsByClassName('list')[0]
+            list.addEventListener('click', function (e) {
+                let evt = e || window.event;
+                let num = evt.target.attributes['index']['value']
+                let src = data[num - 1]
+                iframe.src = src
+            }, false) 
         }
-
-        function getStyle (obj, attr) {
-            if (obj.currentStyle) {
-                return obj.currentStyle[attr]
-            } else {
-                return getComputedStyle(obj, 1)[attr]
-            }
-        }
-
-        var str = '75146836.85'
-        
-        // var newStr = str.substring(0, str.lastIndexOf('.'))
-        // let arr = newStr.split('').reverse()
-        // for (let i = 0; i < arr.length; i++) {
-
-        // }
-        function test(str) {
-            var re = /(?=(?!\b)(\d{3})+$)/g;
-            return str.replace(re, ',');
-        }
-
-        // str = '98156464436465';
-        // test(str);
-
-    </script>
+    </script> 
 </body>
 </html>

@@ -51,6 +51,24 @@
 
 
    let x = new Collection()
+
+//    ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。
+
+// 1. Symbol.hasInstance()
+// Object[Symbol.hasInstance]()
+
+//    2. Symbol.species()
+//     class MyArray extends Array {
+//        static get [Symbol.species] () {
+//            return Array
+//        }
+//     }
+//     const a = new MyArray(1, 2, 3)
+//     const b = a.map(x => x)
+//     b instanceof MyArray   // false
+//     b instanceof Array // true
+// 3. Symbol.match()
+// String.prototype.match(regexp) === regexp[Symbol.match](this)
     </script>
 </body>
 </html>
