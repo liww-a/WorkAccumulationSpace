@@ -449,3 +449,13 @@ function keyCode(event) {
     let keyCode = event.keyCode || event.which || event.charCode
     return keyCode
 }
+
+// 计算字符串字节
+// 根据unicode 0-255 占一个byte  256-- 占2个bytes
+function getBytesd (str) {
+    let bytes = str.length
+    for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) > 255) bytes++
+    }
+    return bytes
+}

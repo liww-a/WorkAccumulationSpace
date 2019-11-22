@@ -16,7 +16,7 @@
     Person.prototype = {
         ablility: 1000,
         sayName: function () {
-            alert(this.name)
+            // alert(this.name)
         }
     }
     let person1 = new Person('liwenwen', 25)
@@ -46,6 +46,113 @@
     // shift 始终删除数组的第一个元素， 返回被删除的元素
     // 学到 44分钟了
     
+   </script>
+   <script>
+       function fn () {
+           console.log(fn)
+       }
+    //    每一个函数都是一个对象, 对象中有些属性可以访问,有些不可以,这些不可以访问的属性,仅供JavaScript引擎存取, [[scope]] 就是其中的一个.
+    // [[scope]]就是 作用域, [[scope]]中存取着 函数 执行期上下文对象 的集合,
+    // 执行期上下文对象成链式连接 即 作用域链
+    //    console.log(fn.prototype)
+    //    实例的prototype属性 指向了 构造函数
+
+
+
+    function River () {
+        this.width = '5m'
+        this.length = '1000m'
+    }
+    River.prototype.flow = function () {
+        // console.log('I can flow')
+    }
+    let changJiang = new River()
+    
+    // 构造函数的原型对象,最少有两个属性(constructor, __proto__)
+    changJiang.name = 'changjiang river'
+    changJiang.toString()
+    changJiang.toLocaleString()
+    
+    function Vegetables (color, season) {
+        this.color = color
+        this.season = season
+    }
+    Vegetables.prototype.name = 'carrot'
+    Vegetables.prototype.way = 'fry'
+
+    const shallot = new Vegetables('purple', 'summer')
+    const carrot = new Vegetables('yellow', 'autumn')
+    // javaScript 中object & function 也是变量
+    // JavaScript 拥有函数作用域:每个函数创建一个新的作用域
+
+    // 方法是可以在对象执行的动作
+    // 万物皆对象, 属性是对象的说明,方法是对象的功能
+    // 属性指的是 JavaScript 对象相关的值, JavaScript 对象是无序属性的集合
+    // 实例一档成功,各实例之间就没什么关系了
+    // delete 关键字不会删除被继承的属性. 但是如果您删除了某个原型属性, 则将影响到所有从原型继承的对象
+    // 通过delete 删除实例 的属性不会影响构造函数的
+
+    const cabbage = {
+        name: 'cabbage',
+        color: 'green',
+        get shape() {
+            return 'shpere'
+        }
+    }
+    
+
+    const obj = {
+        counter: 0,
+        // get reset () {
+        //     return this.counter = 0
+        // },
+        // get increment () {
+        //     return this.counter++
+        // },
+        // get decrement () {
+        //     return this.counter--
+        // },
+        // set addition (value) {
+        //     this.counter += value
+        // },
+        // set subtract (value) {
+        //     this.counter -= value
+        // },
+        // get time () {
+        //     return Date.now()
+        // }
+    }
+    Object.defineProperty(obj, 'reset', {
+        get: function () {
+            return this.counter = 0
+        }
+    })
+    Object.defineProperty(obj, 'increment', {
+        get: function () {
+            return this.counter ++
+        }
+    })
+    Object.defineProperty(obj, 'addition', {
+        set: function (value) {
+            ths.counter++
+        }
+    })
+    // Object.defineProperty(obj, 'name', {
+    //     value: 'counter'
+    // })
+    Object.defineProperties(obj, {
+        name: {value: 'counter'},
+        lifeTime: {value: 3}
+    })
+
+
+    Object.getOwnPropertyDescriptor(obj, 'name')
+    Object.getOwnPropertyNames(obj) // 以数组返回所有属性
+    Object.keys(obj) // 以数组形式返回可枚举的属性
+
+
+    const cars = [2,8,9,0,3,5,7]
+    console.log(cars.sort());
    </script>
 </body>
 </html>

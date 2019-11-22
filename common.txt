@@ -7,51 +7,49 @@
   不同点： absolute 的根元素可以设置， fixed的根元素不可设置
 
 
-# Copyright (c) 1993-2009 Microsoft Corp.
-#
-# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
-#
-# This file contains the mappings of IP addresses to host names. Each
-# entry should be kept on an individual line. The IP address should
-# be placed in the first column followed by the corresponding host name.
-# The IP address and the host name should be separated by at least one
-# space.
-#
-# Additionally, comments (such as these) may be inserted on individual
-# lines or following the machine name denoted by a '#' symbol.
-#
-# For example:
-#
-# 102.54.94.97 rhino.acme.com # source server
-# 38.25.63.10 x.acme.com # x client host
+3. 常见宏任务
+    script 全部代码,
+    setTimeout,
+    setInterval,
+    setImmediate(node 独有),
+    requesAnimationFrame(浏览器独有),
+    I/O,
+    UI rendering(浏览器独有)
+4. 常见微任务
+    process.nextTick( node 独有),
+    Promise.then()
+    Object.observe (废弃)
+    MutationObserver
+    (注意: Promise 构造函数里的代码是同步执行的)
 
-# localhost name resolution is handled within DNS itself.
-# 127.0.0.1 localhost
-# ::1 localhost
-#47.95.68.239 bjpark.glodon.com
+ window.requestIdleCallback(function (idleDeadline) {})
 
-127.0.0.1 bjpark-dev
-127.0.0.1 bjhccd-dev
-127.0.0.1 ceair-dev
-#10.1.83.98 bjhccd-dev
-#10.1.83.98 bjpark-dev
-10.1.83.98 park-dev
+ 递归 处理业务的逻辑符合人的逻辑, 除了让代码简洁,没有任何好处, 先执行的最后才能执行完
 
-#企业云平台
 
-10.0.197.96 bim5d-platform.glodon.com
-192.168.144.147 xmgl.glodon.com
-127.0.0.1 test.glodon.com
+ 浏览器渲染JS 过程,,,, 第一步: 通篇语法分析,　 第二步:预编译，第三步：解释一行执行一行
 
-#用户中心测试地址:
+ 预编译：
+ 函数声明整体提升，变量　声明提升
 
-10.129.8.36  account.glodon.com
+ 暗示全局变量: 即任何变量未经声明就赋值,此变量即为全局对象所有.
+ 一切声明的全局变量,都是window的属性,
 
-#广联云地址：
-10.5.3.49  api.glodon.com
-10.5.3.52  sy.glodon.com 
-10.5.3.56  yun.glodon.com 
-10.5.3.56  xz.glodon.com
-10.5.3.66  owa.glodon.com
-10.5.3.56  express.glodon.com
+ 预编译过程:
+ 1, 创建AO(Activation Object) 对象(执行期上下文)
+ 2,找形参和变量声明, 把形参和变量名作为AO的属性名, 并赋值为undefined
+ 3,将实参值和形参统一,
+ 4,在函数体里面找函数声明, 值为函数体
+
+
+ bind 绑定函数但不立即执行   example:  let fn2 = fn1.bind(object1, object2, object2)
+
+ 预编译  作用域 作用域链  闭包
+
+ 构造函数最后return  引用值  会把隐式的return 覆盖,, 如果是原始值 则没有任何影响
+
+
+包装类过程： 原始值不能有属性和方法
+
+
 

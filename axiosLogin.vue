@@ -1,5 +1,5 @@
 <template>
-  <!--  -->
+  <div class=""></div>
 </template>
 <script>
 import Qs from 'qs'
@@ -59,7 +59,6 @@ export default {
     coso () {
       /* eslint-disable no-new */
       let screenWidth = new AdaptScreen()
-      console.log(screenWidth._windowWidth)
       // alert提示 高深版
       this.$alert('这是一段内容', '标题名称', {
         confirmButtonText: '确定',
@@ -86,7 +85,7 @@ export default {
         }).catch(() => {
           this.$message.info('已取消删除')
         })
-      },
+      }
     },
     // 重置表单
     resetForm (formName) {
@@ -103,19 +102,32 @@ export default {
           currentUser: this.currentUser
         }
       }) + '_t=' + new Date().getTime()
-    }
-    // loading用法
-    // import { Loading } from 'element-ui'
-    // var loadingInstance  = Loading.service({
-    //   text: '正在登录中。。。'
-    // })
-    // loadingInstance.close()
-
+    },
     // vue-migration-helper vue1.0到vue2.0迁移助手
 
-      // #iframe牛逼用法
-      // $("#iframe").attr('src', '/park/project/manager/simulation.html');
-    
+    // #iframe牛逼用法
+    // $("#iframe").attr('src', '/park/project/manager/simulation.html');
+    async fetchUserInfo () {
+      this.$store.commit('USER_INFO_REQUEST')
+      const res = await this.$api.loadUserInfo()
+      return new Promise(function (resolve, reject) {
+        if (res instanceof Object && res.tenantId) {
+          this.$store.commit('USER_INFO_SUCCESS', res)
+          resolve(true)
+        } else {
+          throw new Error()
+        }
+      })
+    },
+
+  },
+  mounted () {
+    Promise.all([
+      this.fetchUserInfo(),
+      this.this.fetchOrgTree()
+    ]).then(function (res) {
+      
+    })
   }
 }
 </script>

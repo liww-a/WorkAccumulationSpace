@@ -25,3 +25,7 @@ css 兼容height   my-height
 JavaScript(es6) code snippets
 Add jsdoc comments  注释插件
 生成函数 注释  选中函数以及所传参数   Ctrl + Shift + p 选中 Add jsdoc comments 按回车键  
+
+
+console.time('name')
+console.timeEnd('name)

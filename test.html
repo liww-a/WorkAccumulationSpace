@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-    </style>
 </head>
 <body>
     <!-- 购物节流 -->
     <div class="box" style="width: 100px; height: 100px; color: #000">0</div>
     <button class="btn">+</button>
+    <textarea name="study" id="study" cols="30" rows="10"></textarea>
     <script>
         var oDiv = document.getElementsByClassName('box')[0]
         var oBtn = document.getElementsByClassName('btn')[0]
         function show (e) {
-            console.log(this, e)
             oDiv.innerText = parseInt(oDiv.innerText) + 1
         }
         function throttle (handler, wait) {
@@ -33,44 +31,93 @@
     </script>
     <!-- 防抖和节流 -->
     <script>
-        function fac (n) {
-            console.log('fac--->' + n)
-            if (n === 0 || n === 1) {
-                return 1
-            } else {
-                return n * fac(n-1)
-            }
-        }
-        function a (fn) {
-            var cache = {}
-            return function () {
-                var key = arguments.length + Array.prototype.join.call(arguments)
-                // 这里可以的作用只是为了有一个唯一的标识
-                if (cache[key]) {
-                    return cache[key]
-                } else {
-                    cache[key] = fn.apply(this, arguments)
-                    return cache[key]
-                }
-            }
-        }
-        var c = a(fac)
-        // 纯函数  不依赖外界  也  不影响外界   预防bug的利器   单元测试  
-        // 管理状态  可预测性 
-        var arr = [
-            {name: 'li'},
-            {name: 'zhang'},
-            {name: 'zhao'}
-        ]
-        function clone (arr) {
-            var _arr = []
-            for (var i = 0; i < arr.length; i++) {
-                _arr.push(Object.assign({}, arr[i]))
-            }
-            return _arr
-        }
-        var newArr = clone(arr)
+    //    Function.prototype.myCall = function (ctx) {
+    //        ctx = ctx || window
+    //        ctx._this = this
+    //        let arg = [...arguments].slice(1)
+    //        let result = ctx._this(...arg)
+    //        return result
+    //    }
+    //    a = 3, b = 5
+    //     var test = {
+    //             name: 'liwenwen',
+    //             a: 1,
+    //             b: 2,
+    //             addition: function () {
+    //                 console.log(this.a + this.b);
+    //             }
+    //     }
+    //     var imply = test.addition
+    //     imply.myCall(test, 1, 2)
+    
     </script>
-    <script src=""></script>
+    <script>
+         (function () {
+            Function.prototype.mineBind = function (context) {
+                // this  指向实例函数 distance
+                context = context || window
+                context._this = this
+                let args = Array.prototype.slice.call(arguments, 1) // 调用bind 传入的参数
+                // var temp = function () { }
+               return function () {
+                    // 使用new 调用的时候,  this -->>  new f()
+                    args.concat([...arguments])
+                    // self.apply(this instanceof temp ? this : (context, window), args.concat(_arg))
+                    context._this(...args)
+
+                }
+                // temp.prototype = self.prototype
+                // f.prototype = new temp()
+            }
+            function distance(x, y, z) {
+                // console.log(23)
+            }
+            let tomato = {
+                name: 'tomato',
+                color: 'red'
+            }
+            let potato = 'potato'
+            let cabbage = 'cabbit'
+            let onion = 'onion'
+            // let fruit = distance.mineBind(tomato, potato, cabbage)
+            // fruit(onion)
+            let fruit = distance.mineBind(tomato, potato, cabbage)
+         
+            // let iterator, formwards, symbol, async, ease, linear, delay, duration
+            // instance hasOwnProperty getOwnPropertyNames
+            // immediately-invoked function expression   立即执行函数 IIFE
+            // cheerio  
+
+            // arr.reduce((a, b) => {
+            //     return rs.then(() => {
+            //         return new Promise(async (resolve) => {
+            //             await getList(url)
+            //             resolve()
+            //         })
+            //     })
+            // }, Promise.resolve())
+           
+        })()
+    </script>
+
+<script>
+
+;(function () {
+    // 首先创建一个16字节固定长度的缓冲
+    var buffer = new ArrayBuffer(16)
+    console.log(buffer.byteLength);
+    // 在实际开始操作这个缓冲之前,需要创建一个视图,
+    // 创建一个视图,此视图将把缓冲内的数据格式化为一个
+    // 32位的有符号整数数组
+    var int32View = new Int32Array(buffer)
+    int32View.forEach((item, index) => int32View[index] = index * 2)
+    console.log(int32View);
+    // console.log(int32View.byteLength);
+    var int16View = new Int16Array(buffer)
+    console.log(int16View);
+    var int8View = new Int8Array(buffer)
+    console.log(int8View);
+})()
+</script>
 </body>
 </html>

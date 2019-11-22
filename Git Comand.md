@@ -12,7 +12,7 @@ git reset --hard HEAD^
 git push origin master -f
 reset是指将HEAD指针指到指定提交，历史记录中不会出现放弃的提交记录。
 
-
+ d69e0776d43f28976339a845e522583b77f42702
 git log 查看历史记录
 
 git diff '你修改的文件文件名'   查看修改内容
@@ -106,3 +106,30 @@ www.debuggap.com
 下载安装 软件  并且把debuggap.js 存放到项目中，然后再引入 index.html 中
 
 打开工具 ---> web调试工具---> 调试H5---> 点击蓝色小方块---> 在大方块中的config 中输入ip
+
+
+npm canmad
+
+npm install --production // 只安装devDependencie 中的依赖
+
+npm uninstall gulp --save-dev
+npm remove gulp --save-dev
+
+npm install lodash@4.17.3  安装具体版本的依赖 
+
+dependencies: {
+    ladash: ^4.17.3  锁定第二位最新
+    ladash: ~4.17.3 锁定 第三位最新
+    ladash: '*' 现在最新版本
+    ladash: 4.17.3 固定版本
+}
+
+npm install live-server -g  安装
+npm root -g  查看全局依赖
+npm remove -g live-server  卸载
+
+npm list  查看 node_modules 
+npm list --depth 0 node_modules展开到一级
+
+
+
