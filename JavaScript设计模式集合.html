@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript 设计模式</title>
+</head>
+<body>
+    <div class="box" title="开始考虑大家疯狂老师就考虑到房价快速的了解">
+        搜地欧式绝地反击
+    </div>
+    <!-- JS Mixin设计模式之Mixin (混入) 模式 -->
+    <script>
+
+    var Car = function (setttings) {
+        this.model = settings.model || 'no model provided'
+        this.color = settings.color || 'no color provaided'
+    }
+
+    var Action = function () {}
+    Action.prototype = {
+        driveForward: function () {
+            console.log('drive forward')
+        },
+        driveBackward: function () {
+            console.log('driveBackward')
+        },
+        driveSideways: function () {
+            console.log('drive driveSideways')
+        }
+    }
+
+
+    function Mixin(recClass, giveClass) {
+        if (arguments.length > 2) {
+            ([].prototype.slice(arguments).slice(2)).forEach(element => {
+                recClass.prototype[element] = giveClass.prototype[element]
+            });
+        } else {
+            let givePrototype = giveClass.prototype
+            for (let key in givePrototype) {
+                if (!recClass.prototype[key]) {
+                    recClass.prototype[key] = givePrototype[key]
+                }
+            }
+        }
+
+
+    }
+
+    // Mixin(Car, Action, 'driveForward', 'driveBackward')
+    // var myCar = new Car({
+    //     model: 'BMW',
+    //     color: 'blue'
+    // })
+
+    // console.log(myCar.color);
+    // myCar.driveBackward()
+
+    Mixin(Car, Action)
+    console.log(Object.getOwnPropertyNames(Car));
+    
+    
+    </script>
+</body>
+</html>

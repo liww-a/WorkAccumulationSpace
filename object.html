@@ -37,6 +37,7 @@
 //    console.log(fn.prototype)
 //    实例的prototype属性 指向了 构造函数
 function River () {
+    console.log(this);
     this.width = '5m'
     this.length = '1000m'
 }
@@ -58,7 +59,7 @@ Vegetables.prototype.way = 'fry'
 
 const shallot = new Vegetables('purple', 'summer')
 const carrot = new Vegetables('yellow', 'autumn')
-// javaScript 中object & function 也是变量
+// javaScript 中object & function 也是变量 
 // JavaScript 拥有函数作用域:每个函数创建一个新的作用域
 
 // 方法是可以在对象执行的动作
@@ -67,17 +68,161 @@ const carrot = new Vegetables('yellow', 'autumn')
 // 实例一档成功,各实例之间就没什么关系了
 // delete 关键字不会删除被继承的属性. 但是如果您删除了某个原型属性, 则将影响到所有从原型继承的对象
 // 通过delete 删除实例 的属性不会影响构造函数的
+// Object.defineProperty()
+// Object.defineProperties()
+// Object.assign(target, ...source)
+// Object.create()
 
-const cabbage = {
-    name: 'cabbage',
-    color: 'green',
-    get shape() {
-        return 'shpere'
+// Object.entries()
+// Object.values()
+// Object.keys()
+
+// Object.getOwnPropertyNames()
+// Object.getOwnPropertyDescriptors()
+// Object.getOwnPropertyDescriptor()
+// Object.getOwnPropertySymbols()
+// Object.getPrototypeOf()
+
+// Object.hasOwnProperty()
+// Object.is()
+
+
+// Object.prototype.hasOwnProperty()
+// Object.prototype.isPrototypeOf()
+// Object.prototype.toString()
+// Object.prototype.valueOf()
+// Object.prototype.toSource()
+// Object.prototype.propertyIsEnumerable()
+
+const cabbage = {}
+
+Object.defineProperty(cabbage, 'color', {
+    value: 'red',
+    configurable: true,
+    enumerable: true,
+    writable: true
+})
+
+Object.defineProperties(cabbage, {
+    'name': {
+        value: 'cabbage',
+        configurable: true,
+        enumerable: true,
+        writable: true
+    },
+    'shape': {
+        configurable: true,
+        enumerable: true,
+        set: function (value) {
+            console.log(value)
+        },
+        get: function () {
+            console.log(this.name);
+        }
+    }
+})
+// mine_assign 方法
+Object.defineProperty(Object, 'mine_assign', {
+    value: function (target, varArgs) {
+        'use strict'
+        if (target == null) {
+            throw new TypeError('Cannot convert undefined or null to object')
+        }
+
+        let to = Object(target)
+
+        for (var index = 1; index < arguments.length; index++) { // 循环第一个参数 除外的 参数列表
+            var nextSource = arguments[index]
+
+            if (nextSource != null) { // 跳过 undefined or null
+                for (let nextKey in nextSource) {
+                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                        to[nextKey] = nextSource[nextKey]
+                    }
+                }
+            }
+        }
+        return target
+    }
+})
+
+let lww = Object.mine_assign({}, {name: 'liww', age: 29})
+// console.log(lww)
+
+// console.log(Object.entries(cabbage));
+// console.log(Object.getPrototypeOf(cabbage));
+
+
+// let liww = { name: 'liww', age: 28 }
+// let wuKong = Object(liww)
+// liww.name = 'wuKong'
+// console.log(wuKong.name, wuKong.age, liww.name, liww.age);
+
+
+// 面向对象继承
+
+// // 父类
+// function Shape () {
+//     this.x = 0
+//     this.y = 0
+// }
+
+// Shape.prototype.move = function (x, y) {
+//     this.x += x
+//     this.y += y
+//     console.info('Shape moved');
+// }
+// // 子类
+// function Rectangle () {
+//     Shape.call(this)
+// }
+
+// Rectangle.prototype = Object.create(Shape.prototype)
+// Rectangle.prototype.constructor = Rectangle
+
+
+// 继承多个父类
+
+// function SuperClass () {}\
+// function OtherSuperClass () {}
+// function MyClass () {
+//     SuperClass.call(this)
+//     OtherSuperClass.call(this)
+// }
+
+// MyClass.prototype = Object.assign({}, SuperClass.prototype, OtherSuperClass.prototype)
+// MyClass.prototype.constructor = MyClass
+
+
+
+class Point {
+    static sayHello () {
+        console.log('hello world');
+    }
+    static sing () {
+        console.log('I LOVE CHINA');
+    }
+    constructor() {
+        this.name = 'point'
+    }
+    set prop (value) {
+        console.log(value);
+    }
+    get prop () {
+        return this.name
+    }
+    sayName () {
+        console.log(this.name);
     }
 }
+let point = new Point()
 
-Object.getOwnPropertyDescriptor(obj, 'name')
-Object.getOwnPropertyNames(obj) // 以数组返回所有属性
-Object.keys(obj) // 以数组形式返回可枚举的属性
+console.log(point);
+// Object.getOwnPropertyDescriptor(obj, 'name')
+// Object.getOwnPropertyNames(obj) // 以数组返回所有属性
+// Object.keys(obj) // 以数组形式返回可枚举的属性
+
+
+
 </script>
 </html>

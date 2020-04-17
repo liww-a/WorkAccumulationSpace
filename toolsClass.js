@@ -473,7 +473,6 @@ function keyCode(event) {
     return keyCode
 }
 
-<<<<<<< HEAD
 
 export default function _asyncToGenerator(fn) {
     return function () {
@@ -494,7 +493,6 @@ export default function _asyncToGenerator(fn) {
         });
     };
 }
-=======
 // 计算字符串字节
 // 根据unicode 0-255 占一个byte  256-- 占2个bytes
 function getBytesd (str) {
@@ -504,4 +502,206 @@ function getBytesd (str) {
     }
     return bytes
 }
->>>>>>> 2dae1c18489a6c03ba02f44c63e04506b0dbbb90
+
+// 执行栈原理循环处理数据方法
+const formateArr = (list) => {
+    if (!list.length) return
+    let transition = [].concat(list)
+    // 模仿执行栈原理
+    while (transition.length) {
+        let item = transition.pop()
+        {
+            // 此处添加具体业务 代码
+            item.age = parseInt(Math.random() * 10)
+        }
+        if (item.children && item.children.length) {
+            transition = transition.concat(item.children)
+        }
+    }
+    return list
+}
+
+window.onUnload = function () {
+    var newWindow;
+    if ((window.screenLeft >= 10000 && window.screenTop >= 10000) || event.altKey) {
+        newWindow = window.open('退出程序地址', '网页名称',
+            'width=0,height=0,top=4000,left=4000'); //新窗口将在视区之外打开 
+        newWindow.opener = null;
+        sleep(5000); //执行休眠操作以便能够处理完新打开窗口执行代码 
+        newWindow.close(); //新窗口关闭
+    }
+}
+
+function sleep(milisecond) {
+    var currentDate, beginDate = new Date();
+    var beginHour, beginMinute, beginSecond, beginMs;
+    var hourGaps, minuteGaps, secondGaps, msGaps, gaps;
+    beginHour = beginDate.getHours();
+    beginMinute = beginDate.getMinutes();
+    beginSecond = beginDate.getSeconds();
+    beginMs = beginDate.getMilliseconds();
+    do {
+        currentDate = new Date();
+        hourGaps = currentDate.getHours() - beginHour;
+        minuteGaps = currentDate.getMinutes() - beginMinute;
+        secondGaps = currentDate.getSeconds() - beginSecond;
+        msGaps = currentDate.getMilliseconds() - beginMs;
+        if (hourGaps < 0) hourGaps += 24; //考虑进时进分进秒的特殊情况 
+        gaps = hourGaps * 3600 + minuteGaps * 60 + secondGaps;
+        gaps = gaps * 1000 + msGaps;
+    } while (gaps < milisecond);
+}
+
+
+let util = {
+
+};
+
+/**
+ * 页面添加title的方法
+ */
+util.title = function (title) {
+    title = title ? title : 'Glodon BIM5D';
+    window.document.title = title;
+};
+
+
+/**
+ *  @比较新旧两个函数，返回被删除的数组和新添加的数组
+ *  @params oldArr：旧数组
+ *  @params newArr 新数组
+ *
+ */
+
+util.addArr = function (oldArr, newArr) {
+    var oldLen = oldArr.length;
+    var newLen = newArr.length;
+    var arr = [];
+    for (var i = 0; i < oldLen; i++) {
+        for (var j = 0; j < newLen; j++) {
+            if (oldArr[i] == newArr[j]) { arr.push(oldArr[i]); }
+        }
+    }
+    var addArr = [];
+    for (var n = 0; n < newLen; n++) {
+        if (arr.indexOf(newArr[n]) < 0) {
+            addArr.push(newArr[n]);
+        }
+    }
+    return addArr;
+}
+
+util.delArr = function (oldArr, newArr) {
+    var oldLen = oldArr.length;
+    var newLen = newArr.length;
+    var arr = [];
+    for (var i = 0; i < oldLen; i++) {
+        for (var j = 0; j < newLen; j++) {
+            if (oldArr[i] == newArr[j]) { arr.push(oldArr[i]); }
+        }
+    }
+    var delArr = [];
+    for (var n = 0; n < oldLen; n++) {
+        if (arr.indexOf(oldArr[n]) < 0) {
+            delArr.push(oldArr[n])
+        }
+    }
+    return delArr;
+}
+
+
+/**
+ * @ 获取cookie方法；
+ * @params key需要获取的键值；
+ */
+util.getCookie = function (key) {
+    var cookieArr = document.cookie.split('; ');
+    for (var i = 0; i < cookieArr.length; i++) {
+        var arr = cookieArr[i].split('=');
+        if (arr[0] === key) {
+            return arr[1];
+        }
+    }
+    return false;
+}
+
+util.setCookie = function (key, value, iDay) {
+    if (iDay > 0) {
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        // Cookie 的expires 属性指定浏览器可发送Cookie 的有效期。当省略expires 属性时，Cookie仅在浏览器关闭之前有效。
+        document.cookie = key + '=' + value + ';expires=' + oDate + ';path=/';
+    } else {
+        document.cookie = key + '=' + value + ';path=/';
+    }
+}
+/**
+ * 数组转递归
+ * @param  {Array} data   [数据源]
+ * @param  {Object} option [配置项]
+ * id 默认为id
+ * label 接口中的key
+ * labelName tree中的key
+ * parent   父id key
+ * @return {Array}        [递归数组]
+ */
+util.getTree = function (data, option) {
+    let targetId = option.id ? option.id : 'id';
+    let label = option.label;
+    let labelName = option.labelName;
+    let parent = option.parent;
+
+    function a(data, id, child) {
+        let result = [],
+            temp;
+        child = child ? child : 'children';
+        let _len = data.length;
+        for (let i = 0; i < _len; i++) {
+            let item = data[i];
+            if (item[parent] == id) {
+                let obj = {};
+                for (let key in item) {
+                    obj[key] = item[key]
+                }
+                obj[labelName] = item[label];
+                obj.id = item[targetId];
+                temp = a(data, item[targetId], child);
+                if (temp.length > 0) {
+                    obj[child] = temp;
+                }
+                result.push(obj);
+            }
+        }
+        return result;
+    }
+    return a(data)
+}
+
+/**
+ * 正则匹配特殊字符
+ */
+util.patrn = new RegExp('[,<,>,;]');
+
+
+/**
+ * 自定义form表单输入项特殊字符验证
+ * @returns form表单验证规则
+ */
+util.formChars = function () {
+    let reg = new RegExp('[",<,>,;]')
+    const chars = (rule, value, callback) => {
+        if (value.length !== value.trim().length) {
+            callback(new Error());
+        } else if (reg.test(value)) {
+            callback(new Error());
+        }
+        callback();
+    }
+    return {
+        validator: chars,
+        message: '请不要输入特殊字符',
+        trigger: 'blur'
+    }
+}
+
+export default util;

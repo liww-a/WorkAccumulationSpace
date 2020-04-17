@@ -1,12 +1,4 @@
-﻿flux  状态管理
-
-View    
-Action    
-Dispatcher(派发器)    
-Store (数据层)   用来存放应用的状态   一旦发生变动   就提醒View 更新页面
-
-react  router   onEnter   onLeave   两个事件
-
+﻿
 jquery  ----trigger bind
 $('p').click(function (event, a, b) {
     // 一个普通的点击事件时， a & b 是undefined 类型
@@ -34,12 +26,64 @@ jQuery.fn.extend({
 })
 
 
-https://iqiyi.qq-zuidazy.com/20190522/11077_fc2f6a3a/index.m3u8
-https://bili.meijuzuida.com/20190523/15147_b868b285/index.m3u8
-https://iqiyi.com-t-iqiyi.com/20190524/3007_a46f7f7d/index.m3u8
-https://bili.meijuzuida.com/20190529/15768_ba61ac48/index.m3u8
+, 运算符 直接返回 最后一个
+
+let fn = (function a () {}, function b () {return 2})() // 2
+
+if (function b (){}) {
+    console.log(typeof b)
+} // 'undefind' 
+
+(function b () {})  这是一个表达式 函数名b 会被忽略
+
++undefind 隐式转换为 NaN
 
 
+x = undefind, y = undefined,
 
 
+typeof    'sring'  'number' 'boolean'  'undefind'  'function'   'object'
 
+
+互联网的基本知识,---开通一个网站
+
+学习互联网的一个理论知识,最简单的方法就是自己开通一个网站, 拥有一个www.***.com的网址, 
+
+
+购买域名(相当于车牌)
+    域名服务网站
+    https/sg.godaddy.com/zh/
+    https/www.henghost.com
+租用服务器
+    我们要租用一台服务区,基本上是一个月300元,开辟linux 的远程接口进行操作,
+    初学者只需要一个虚拟主机, 大约全年180元左右
+    虚拟主机就是一个主机上虚拟出一个小网站,方便初学者练手
+
+    也在上述域名服务网站
+
+域名解析(就是让域名和服务器产生绑定关系)
+    买了域名和租用了服务器然后进行两者绑定
+    进入  godaddy ----> 域名管理 -=--> 我的域名----> 管理DNS
+    完后百度域名解析方法  完成域名解析
+    然后 打开cmd pingIP
+
+
+上传文件:开工
+使用 8UFtp 软件
+打开 8UFtp 软件  填写信息 ----> 邮件里的信息   
+
+
+2020年 学习技术栈  React  Angular TypeScript WebAssembly   flutter
+
+TypeScript, 他是 有类型定义的 JavaScript 的超集, 包括ES6 ES6+ 和其他一些 诸如 反射, 泛型, 类型定义,
+命名空间等特征的集合. TypeScript 提供了业界认可的类, 泛型, 封装, 接口 面向对象 的设计能力.
+
+要了解的框架  Node.js Web 框架, 尤其是Egg.js 对TS 支持非常好, 
+
+更高级, 更专注的 Midway框架, Midway 基于 Egg 生态, 同时提供loC 等高级玩法,
+
+最初Google 提供了AngularJS 和 AngularDart 两个框架(或者叫两个框架的实现),分别用于JavaScript 和 Dart 的Web 开发,
+
+blob 图象中的一块连通区域， 
+
+APP分发

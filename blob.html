@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>blob</title>
+</head>
+<body>
+    <script>
+    
+    var blob = new Blob(['hello world'], {
+        type: 'text/plain'
+    })
+    
+    var blob1 = blob.slice(1, 6)
+    console.log(blob1)
+    console.log(Blob.text);
+    let redTea = new Blob()
+    console.log(redTea.webkitText);
+    function sliceBlob (blob, start, end, type) {
+        type = type || blob.type
+        if (blob.webkitSlice) {
+            return blob.webkitSlice(start, end, type)
+        } else if (blob.mozSlice) {
+            return blob.mozSlice(start, end, type)
+        } else {
+            return blob.slice(start, end, type)
+        }
+    }
+    
+
+
+    // var typedArray = GetTheTypedArraySomehow()
+    
+    // console.log(typedArray);
+    // var blob = new Blob([typedArray.buffer], {
+    //     type: 'application/octet-stream'
+    // })
+    // console.log(blob);
+    // var url = URL.createObjectURL(blob)
+    // console.log(url);
+
+
+    var reader = new FileReader()
+    console.log(reader);
+    reader.addEventListener('loadend', function () {
+
+    })
+
+    console.log(reader);
+    reader.readAsArrayBuffer(blob)
+    </script>
+</body>
+</html>

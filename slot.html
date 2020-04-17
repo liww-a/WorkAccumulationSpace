@@ -30,24 +30,42 @@
         </my-stripe-list>
     </div>
     <script>
-        Vue.component('my-stripe-list', {
-            /*slot的$index可以传递到父组件中*/
-            template: `
-          <div>
-            <div v-for="(item, index) in items">
-              <slot name="cont" :$index="index"></slot>
-              <slot name="a" :$index="index"></slot>
+        var MyStripeList = Vue.extend({
+            template:
+            `<div>
+                <div v-for="(item, index) in items">
+                <slot name="cont" :$index="index"></slot>
+                <slot name="a" :$index="index"></slot>
+                </div>
             </div>
-          </div>
-        `,
+            `,
             props: {
                 items: Array,
                 oddBgcolor: String,
                 evenBgcolor: String
             }
-        });
+        })
+        // Vue.component('my-stripe-list', {
+        //     /*slot的$index可以传递到父组件中*/
+        //     template: `
+        //   <div>
+        //     <div v-for="(item, index) in items">
+        //       <slot name="cont" :$index="index"></slot>
+        //       <slot name="a" :$index="index"></slot>
+        //     </div>
+        //   </div>
+        // `,
+        //     props: {
+        //         items: Array,
+        //         oddBgcolor: String,
+        //         evenBgcolor: String
+        //     }
+        // });
         new Vue({
             el: '#app2',
+            components: {
+                MyStripeList
+            },
             data: {
                 users: [{
                     id: 1,

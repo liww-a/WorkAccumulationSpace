@@ -1,0 +1,401 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        
+        // Generator 函数是ES6 提供的一种异步编程解决方案,
+        
+        // 异步编程使得多个任务可以并发执行,---给予事件循环的并发模型.
+        // JavaScript 单线程 异步编程可以实现多任务 并发 执行,
+        // 并行,指在同一时间段内,多任务同时进行着, 但是某一时刻,只有某一任务执行.
+        
+        // setTimeout   AJAX  Promise  Generator
+        
+        
+        // 异步任务--->EventTable ---> 注册回调函数---> 然后到 到对应的任务队列中  等待被执行
+
+        // const promise = new Promise((resolve) => {
+        //     setTimeout(function () { // macro task   --- eventTable注册回调事件 -=->  宏任务队列
+        //         console.log('promise')
+        //         resolve('hello')
+        //     }, 5000)
+        // })
+        // promise.then((value) => { // micro task  --- evenetTable注册回调事件---->  微任务队列
+        //     console.log('then');
+        //     console.log(value, 'world')
+        // }, (error) => {
+        //     console.log('catch');
+        //     console.log(error, 'unhappy');
+        // })
+
+    // 执行到这里, 执行栈空了, 主线程空闲  ---->  看微任务队列 有没有任务=---->> 有 --->> 全部执行完毕
+
+    // 到此第一轮事件轮询完毕,
+
+    // 第二轮一开始就去宏任务队列中---->>看有没有任务,,---有执行
+
+    // `````
+    // const promise1 = new Promise((resolve) => {
+    //     setTimeout(() => {
+    //         resolve('hello')
+    //     }, 1000)
+    // })
+    // promise1.then(value => {
+    //     throw new Error('chu cuo la!!!!')
+    // }).then(value => {
+    //     console.log(2, value);
+    // }, error => {
+    //     console.log(3, error.message);
+    //     return 'result'
+    // }).then(function () {
+    //     console.log(4, 'yin cheng nuo');
+    // })
+    // ````
+
+
+    // ```
+    // var defer = function () {
+    //     var pending = [], value
+    //     return {
+    //         resolve: function (_value) {
+    //             value = _value
+    //             for(var i = 0, ii = pending.length; i < ii; i++) {
+    //                 var callback = pending[i]
+    //                 callback(value)
+    //             }
+    //         },
+    //         then: function (callback) {
+    //             if (pending) {
+    //                 pending.push(callback)
+    //             }
+    //         }
+    //     }
+    // }
+    // defer().resolve().then(function (res) {
+        
+    // })
+    // ```
+
+
+    // 语法   Generator  封装了多个内部状态  --->  状态机
+
+    // 执行   Generator   返回遍历器对象    
+
+    
+
+    // function* hellowGenerator () {
+    //     yield Math.random()
+    //     yield 'world'
+    //     return 6
+    // }
+    // let g = hellowGenerator()
+    // for (let item of g) {
+    //     console.log(item);
+    // }
+
+    // console.log(g.next());
+    // console.log(g.next());
+    // console.log(g.next());
+    // 1, Generator  执行   返回  遍历器对象   只有调用 next()  才能遍历出下一个状态
+    // 2, 遇到  yield  表达式, 就暂停   
+
+    // 3, yield  用在 其他的 表达式中  必须放在  () 中
+
+
+
+    // function* f () {
+    //     for(var i = 0; true; i++) {
+    //         console.log('top---', i);
+    //         console.log((yield i));
+    //         var reset = yield i
+    //         console.log('down--', i)
+    //         if (reset) {
+    //             i = -1
+    //         }
+    //     }
+    // }
+    // g = f()
+    // console.log(g.next());
+    // console.log(g.next(true));
+    // next() 可以带一个参数, 该参数会被当做上一个 yield表达式的返回值
+
+
+
+
+    // function wrapper (generatorFn) {
+    //     return function (...args) {
+    //         let generatorObject = generatorFn(...args)
+    //         generatorObject.next()
+    //         return generatorObject
+    //     }
+    // }
+
+
+    // const wrapped = wrapper(function* () {
+    //     console.log(`First input: ${yield}`);
+    //     return 'DONE'
+    // })
+    // wrapped().next('hello')
+
+
+    // yield 表达式本身并没有返回值, 或者说 总是返回undefined,
+    // function* foo(x) {
+    //     var y = 2 * (yield (x + 1)) // y = 2 * undefined   
+    //     var z = yield (y / 3) // z = undefined
+    //     return (x + y + z)
+    // }
+    // var a = foo(5)
+    // console.log(a.next());
+    // console.log(a.next());
+    // console.log(a.next());
+
+
+
+
+
+    // function* foo(x) {
+    //     // x = 5
+    //     var y = 2 * (yield (x + 1)) // b.next(12) ---> y = 2 * 12   
+    //     var z = yield (y / 3) // b.next(13) --->  z = 13
+    //     return (x + y + z) // x = 5, y = 24, z = 13
+    // }
+    // var b = foo(5)
+
+    // console.log(b.next());
+    // console.log(b.next(12));
+    // console.log(b.next(13));
+
+
+    // function* dataConsumer() {
+    //     console.log('Started');
+    //     console.log(`1. ${yield}`); // genObj.next() 
+    //     console.log(`2. ${yield}`);
+    //     return 'result';
+    // }
+
+    // let genObj = dataConsumer();
+    // genObj.next();
+    // // Started
+    // genObj.next('a')
+    // // 1. a
+    // genObj.next('b')
+    // // 2. b
+
+    // 原生的 JavaScript 对象没有遍历接口，
+    // function* objectEntries(obj) {
+    //     let propKeys = Reflect.ownKeys(obj)
+    //     for(let propKey of propKeys) {
+    //         yield [propKey, obj[propKey]]
+    //     }
+    // }
+
+    // let jane = { first: 'Jane', last: 'Doe' };
+
+    // for (let [key, value] of objectEntries(jane)) {
+    //     console.log(`${key}: ${value}`);
+    // }
+
+
+
+
+
+    // function* objectEntries() {
+    //     let propKeys = Object.keys(this);
+
+    //     for (let propKey of propKeys) {
+    //         yield [propKey, this[propKey]];
+    //     }
+    // }
+
+    // let jane = { first: 'Jane', last: 'Doe' };
+
+    // jane[Symbol.iterator] = objectEntries;
+
+    // for (let [key, value] of jane) {
+    //     console.log(`${key}: ${value}`);
+    // }
+
+
+    // Generator 函数返回的遍历器对象， 都有一个throw 方法， 可以在函数体外抛出错误， 在Generator 函数体内捕获
+    // var g = function* () {
+	  //   try{
+		// 		console.log('try');
+		// 		yield
+	  //   }catch(e){
+		// 		console.log('catch');
+		// 		console.log('内部捕获', e);
+		// 	}
+    // }
+		// var gener = g()
+		// gener.next()
+		
+		// try {
+		// 	gener.throw('a')
+		// 	gener.throw('b')
+		// } catch (e) {
+		// 	console.log('外部捕获', e);
+		// }
+
+
+    // ES6提供了 yield* 用来在Generator函数体内执行另外一个Generator函数
+	// let delegatedIterator = (function* () { // 被代理者
+	// 	yield 'Hello!';
+	// 	yield 'Bye!';
+	// }());
+
+	// let delegatingIterator = (function* () { // 代理者
+	// 	yield 'Greetings!';
+	// 	yield* delegatedIterator;
+	// 	yield 'Ok, bye.';
+	// }());
+
+	// for (let value of delegatingIterator) {
+	// 	console.log(value);
+	// }
+
+  // function* g() {
+  //   yield 1;
+  //   console.log('throwing an exception');
+  //   throw new Error('generator broke!');
+  //   yield 2;
+  //   yield 3;
+  // }
+
+  // function log(generator) {
+  //   var v;
+  //   console.log('starting generator');
+  //   try {
+  //     v = generator.next();
+  //     console.log('第一次运行next方法', v);
+  //   } catch (err) {
+  //     console.log('捕捉错误', v);
+  //   }
+  //   try {
+  //     v = generator.next();
+  //     console.log('第二次运行next方法', v);
+  //   } catch (err) {
+  //     console.log('捕捉错误', v);
+  //   }
+  //   try {
+  //     v = generator.next();
+  //     console.log('第三次运行next方法', v);
+  //   } catch (err) {
+  //     console.log('捕捉错误', v);
+  //   }
+  //   console.log('caller done');
+  // }
+
+  // log(g());
+
+
+
+    // function* foo() {
+    //   yield 'a'
+    //   yield 'b'
+    //   return 'result'
+    // }
+
+    // function* bar (genObject) {
+    //   // genObject 是一个遍历器对象
+    //   // let result = yield* genObject // 第一种写法
+    //   // console.log(result)
+    //   for (let item of genObject) { // for of 是第二种写法
+    //     yield item
+    //   }
+    // }
+
+    // console.log([...bar(foo())]);
+
+
+
+
+// function* foo () {
+//   console.log(this)
+//   yield 1
+//   yield 2
+//   return 3
+// }
+// foo.prototype.sing = 'wo he wo de zu guo'
+// foo.prototype.dance = function () {
+//   return 'wo xihuan tiaowu'
+// }
+// let gen = foo()
+// console.log(gen.sing);
+// console.log(gen.dance());
+// gen.next()
+
+// function Exce () {
+//   this.name = 'liwen'
+//   console.log(this);
+// }
+// Exce.prototype.carrot = function () {
+//   console.log(this)
+// }
+// var one = new Exce()
+// console.log(one.name);
+// one.carrot()
+
+
+// Generator 是实现状态机的最佳结构, 
+// var ticking = true
+// var clock = function () {
+//   if (ticking) {
+//     console.log('Tick');
+//   } else {
+//     console.log('Tock');
+//   }
+//   ticking = !ticking
+// }
+
+
+// var clock = function* () {
+//   while(true) {
+//     console.log('Tick')
+//     yield;
+//     console.log('Tock');
+//     yield
+//   }
+// }
+// let c = clock()
+
+
+// Generator 函数有多种应用场景
+
+// 1) 异步操作的同步化表达
+
+// 2) 控制流管理
+
+// 3) 部署Iterator接口
+
+
+// 4) 作为数据接构  --- 数组接构
+
+let array = function* () {
+  yield {
+    id: 1,
+    name: 'one'
+  }
+  yield {
+    id: 2,
+    name: 'two'
+  }
+  yield 3
+  yield 4
+  return 5
+}
+
+console.log([...array()]);
+</script>
+</html>

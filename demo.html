@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
@@ -25,12 +25,57 @@
         .box:hover .child-box{
             max-height: 200px;
         }
+        .container {
+            width: 100%;
+            height: 500px;
+        }
     </style>
 </head>
 <body>
-    <!-- 整体 -->
     <div class="box">
-        <div class="child-box"></div>
+        爱因斯坦算得上20世纪最神奇的人物。他的相对论，据说“全世界只有两个半人能懂”。<br/>
+        由于其理论太过先进，以至于当时世界上最聪明的一些科学家，<br/>
+        包括相对论变换关系的奠基人洛伦兹，都觉得难以接受。<br/>
+        1922年，瑞典皇家科学院将诺贝尔奖颁发给爱因斯坦时，<br/>
+        只是说“由于爱因斯坦对理论物理学的贡献，更由于他发现了光电效应的定律”，<br/>
+        而没敢对爱因斯坦的相对论作出评价。时至今日，能够理解相对论的人仍然不多--哪怕只是大致的理解。<br/>
+        近百年来，随着科学的发展，大量的实验证明，爱因斯坦的理论是正确的。<br/>
+        这个独特的犹太人，具有令人匪夷所思的智慧。个别想象力丰富的人，<br/>
+        甚至断言爱因斯坦来自外星。在爱因斯坦去世之后，他的大脑没有火化，<br/>
+        而是被小心保存在普林斯顿大学。几十年来，科学界对这个出类拔萃的大脑进行了全面研究。
     </div>
+    <script>
+        // 原理取消 CTRL + ↓ & CTRL + ↑ & ctrl + 鼠标滚动事件
+        document.addEventListener('DOMContentLoaded', function (event) {
+            // chrome 浏览器直接加上下面这个样式就行了，但是火狐不识别
+            document.body.style.zoom = 'reset';
+            document.addEventListener('keydown', function (event) {
+                console.log(event.keyCode);
+                if ((event.ctrlKey === true || event.metaKey === true)
+                    && (event.keyCode === 107 || event.keyCode === 61
+                        || event.keyCode === 173 || event.keyCode === 109
+                        || event.keyCode === 187 || event.keyCode === 189)) {
+                            // console.log('yes');
+                    event.preventDefault();
+                }
+            }, false);
+            // mousewheel and DOMMouseScroll 事件处理程序
+            function mouseWheel (event) {
+                if (event.ctrlKey === true || event.metaKey) {
+                    event.preventDefault();
+                }
+            }
+            // 标准浏览器和IE浏览器
+            document.addEventListener('mousewheel', mouseWheel , {
+                passive: false,
+                capture: false
+            });
+            // 兼容火狐浏览
+            document.addEventListener('DOMMouseScroll', mouseWheel, {
+                passive: false,
+                capture: false
+            })
+        }, false);
+    </script>
 </body>
 </html>
